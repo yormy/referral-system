@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "yormy/referral-system",
+    "description": "Tracking of referrals in laravel",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "yormy",
+        "referral-system"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/yormy/referral-system",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": "https://spatie.be",
+            "name": "Yormy",
+            "email": "dev@yormy.com",
+            "homepage": "https://yormy.com",
             "role": "Developer"
         }
     ],
@@ -26,13 +26,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src",
-            "Spatie\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Yormy\\ReferralSystem\\": "src",
+            "Yormy\\ReferralSystem\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Yormy\\ReferralSystem\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -46,23 +46,13 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
+                "Yormy\\ReferralSystem\\ReferralSystemServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
+                "ReferralSystem": "Yormy\\ReferralSystem\\ReferralSystemFacade"
             }
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "funding": [
-        {
-            "type": "github",
-            "url": "https://github.com/sponsors/spatie"
-        },
-        {
-            "type": "other",
-            "url": "https://spatie.be/open-source/support-us"
-        }
-    ]
+    "prefer-stable": true
 }

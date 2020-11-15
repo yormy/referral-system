@@ -1,12 +1,12 @@
 <?php
 
-namespace Spatie\Skeleton\Commands;
+namespace Yormy\ReferralSystem\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class ReferralSystemCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'referral-system';
 
     public $description = 'My command';
 

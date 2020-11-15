@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace Yormy\ReferralSystem\Tests;
 
 class ExampleTest extends TestCase
 {
