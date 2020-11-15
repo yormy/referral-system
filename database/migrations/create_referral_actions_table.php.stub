@@ -16,7 +16,7 @@ class CreateReferralActionsTable extends Migration
              */
             $table->string('name')->comment('ie: SIGNUP');
             $table->integer('points')->comment('ie: 4');
-            $table->text('description');
+            $table->text('description')->nullable();
 
             $table->timestamps();
         });

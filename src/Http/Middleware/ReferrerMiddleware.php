@@ -5,12 +5,13 @@ namespace Yormy\ReferralSystem\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
-use Yormy\ReferralSystem\Models\ReferralDomain;
+use Yormy\ReferralSystem\Traits\CookieTrait;
 
 class ReferrerMiddleware
 {
+    use CookieTrait;
 
-    protected $referrerCookieName = "via";
+    protected $referrerQueryParam = "via";
 
     protected $referringUserModel;
 
@@ -21,11 +22,10 @@ class ReferrerMiddleware
 
     public function handle(Request $request, Closure $next)
     {
-        // check parameter
-        $referringUser = $this->getFromParameter($request);
+        $referringUser = $this->getReferrerFromParameter($request);
 
         if(!$referringUser) {
-            $referringUser = $this->getFromCookie();
+            $referringUser = $this->getReferrerFromCookie();
         }
 
         $this->setCookie($referringUser);
@@ -33,23 +33,12 @@ class ReferrerMiddleware
         return $next($request);
     }
 
-    private function getFromParameter(Request $request)
+    private function getReferrerFromParameter(Request $request)
     {
-        $via = $request->input('via');
+        $via = $request->input($this->referrerQueryParam);
         return (new $this->referringUserModel)->where('id', $via)->first();
     }
 
-    private function getFromCookie()
-    {
-        if (request()->hasCookie($this->referrerCookieName)) {
-            $userId = request()->cookie($this->referrerCookieName);
-            return (new $this->referringUserModel)->where('id', $userId)->first();
-        }
-    }
 
-    private function setCookie($referringUser)
-    {
-        Cookie::queue($this->referrerCookieName, $referringUser->id, config('referral-system.cookie_lifetime_in_minutes'));
-    }
 
 }

@@ -2,6 +2,7 @@
 
 namespace Yormy\ReferralSystem;
 
+use Yormy\ReferralSystem\Providers\EventServiceProvider;
 use DirectoryIterator;
 use FilesystemIterator;
 use Illuminate\Support\ServiceProvider;
@@ -59,6 +60,7 @@ class ReferralSystemServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/referral-system.php', 'referral-system');
+        $this->app->register(EventServiceProvider::class);
     }
 
     public static function migrationFileExists(string $migrationFileName): bool

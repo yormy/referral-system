@@ -2,6 +2,7 @@
 
 return [
     'cookie_lifetime_in_minutes' => 60*24*7,
+    'cookie_name' => 'referral_cookie',
 
     'models' => [
 
