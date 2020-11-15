@@ -13,7 +13,5 @@ class ReferralSystemCommand extends Command
     public function handle()
     {
         $this->comment('All done');
-
-        $test =2;
     }
 }

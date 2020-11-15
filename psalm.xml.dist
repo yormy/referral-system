@@ -12,5 +12,6 @@
         <ignoreFiles>
             <directory name="vendor"/>
         </ignoreFiles>
+        <directory name="tests"/>
     </projectFiles>
 </psalm>
