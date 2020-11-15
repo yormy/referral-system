@@ -16,6 +16,7 @@
     </projectFiles>
 
     <issueHandlers>
+        <NoInterfaceProperties errorLevel="info" />
     </issueHandlers>
 
     <plugins>

@@ -14,6 +14,9 @@ trait CookieTrait
         if (request()->hasCookie($referrerCookieName)) {
             $userId = request()->cookie($referrerCookieName);
 
+            /**
+             * @psalm-suppress UndefinedClass
+             */
             $model = new $referringUserModel;
 
             return $model->where('id', $userId)->first();
