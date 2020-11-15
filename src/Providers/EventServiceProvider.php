@@ -7,7 +7,6 @@ use Yormy\ReferralSystem\Observers\ActionSubscriber;
 
 class EventServiceProvider extends ServiceProvider
 {
-
     protected $subscribe = [
         ActionSubscriber::class,
     ];

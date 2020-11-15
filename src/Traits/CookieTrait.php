@@ -13,6 +13,7 @@ trait CookieTrait
 
         if (request()->hasCookie($referrerCookieName)) {
             $userId = request()->cookie($referrerCookieName);
+
             return (new $referringUserModel)->where('id', $userId)->first();
         }
     }

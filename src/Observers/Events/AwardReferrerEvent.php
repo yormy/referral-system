@@ -7,7 +7,8 @@ use Illuminate\Queue\SerializesModels;
 
 class AwardReferrerEvent
 {
-    use Dispatchable, SerializesModels;
+    use Dispatchable;
+    use SerializesModels;
 
     public string $actionId;
 
@@ -15,5 +16,4 @@ class AwardReferrerEvent
     {
         $this->actionId = $actionId;
     }
-
 }
