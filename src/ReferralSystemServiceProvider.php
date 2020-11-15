@@ -2,6 +2,8 @@
 
 namespace Yormy\ReferralSystem;
 
+use DirectoryIterator;
+use FilesystemIterator;
 use Illuminate\Support\ServiceProvider;
 use Yormy\ReferralSystem\Commands\ReferralSystemCommand;
 
@@ -18,12 +20,7 @@ class ReferralSystemServiceProvider extends ServiceProvider
                 __DIR__ . '/../resources/views' => base_path('resources/views/vendor/referral-system'),
             ], 'views');
 
-            $migrationFileName = 'create_referral_system_table.php';
-            if (! $this->migrationFileExists($migrationFileName)) {
-                $this->publishes([
-                    __DIR__ . "/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/' . date('Y_m_d_His', time()) . '_' . $migrationFileName),
-                ], 'migrations');
-            }
+            $this->publishMigrations();
 
             $this->commands([
                 ReferralSystemCommand::class,
@@ -31,6 +28,20 @@ class ReferralSystemServiceProvider extends ServiceProvider
         }
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'referral-system');
+    }
+
+    private function publishMigrations()
+    {
+        $migrations = new FilesystemIterator(__DIR__ . "/../database/migrations");
+
+        foreach ($migrations as $fileInfo) {
+            $migrationFileName = $fileInfo->getFilename();
+            if (! $this->migrationFileExists($migrationFileName)) {
+                $this->publishes([
+                    $fileInfo->getPath().  "/{$migrationFileName}" => database_path('migrations/' . date('Y_m_d_His', time()) . '_' . $migrationFileName),
+                ], 'migrations');
+            }
+        }
     }
 
     public function register()
