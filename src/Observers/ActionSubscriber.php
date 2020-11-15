@@ -4,7 +4,9 @@ namespace Yormy\ReferralSystem\Observers;
 
 use Illuminate\Events\Dispatcher;
 use Yormy\ReferralSystem\Observers\Events\AwardReferrerEvent;
+use Yormy\ReferralSystem\Observers\Events\AwardRevokeEvent;
 use Yormy\ReferralSystem\Observers\Listeners\AwardReferrerListener;
+use Yormy\ReferralSystem\Observers\Listeners\AwardRevokeListener;
 
 class ActionSubscriber
 {
@@ -18,6 +20,11 @@ class ActionSubscriber
         $events->listen(
             AwardReferrerEvent::class,
             AwardReferrerListener::class
+        );
+
+        $events->listen(
+            AwardRevokeEvent::class,
+            AwardRevokeListener::class
         );
     }
 }

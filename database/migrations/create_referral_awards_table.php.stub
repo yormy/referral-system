@@ -14,7 +14,8 @@ class CreateReferralAwardsTable extends Migration
             $table->unsignedBigInteger('referrer_id');
             $table->unsignedBigInteger('action_id');
             $table->text('description')->nullable();
-            $table->boolean('revoked')->default(false);
+            $table->text('delete_reason')->nullable();
+
             $table->unsignedBigInteger('payment_id')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');

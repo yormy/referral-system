@@ -38,6 +38,7 @@ class ReferralSystemServiceProvider extends ServiceProvider
             'create_referral_domains_table.php',
             'create_referral_payments_table.php',
             'create_referral_awards_table.php',
+            'seed_referral_actions_table.php',
         ];
 
         $index = 0;
