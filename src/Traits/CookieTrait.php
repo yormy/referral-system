@@ -14,7 +14,8 @@ trait CookieTrait
         if (request()->hasCookie($referrerCookieName)) {
             $userId = request()->cookie($referrerCookieName);
 
-            return (new $referringUserModel)->where('id', $userId)->first();
+            $model = new $referringUserModel;
+            return $model->where('id', $userId)->first();
         }
     }
 
