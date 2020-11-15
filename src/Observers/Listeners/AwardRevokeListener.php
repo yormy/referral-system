@@ -26,8 +26,6 @@ class AwardRevokeListener
                 $latestReward->save();
                 $latestReward->delete();
             }
-
         }
-
     }
 }
