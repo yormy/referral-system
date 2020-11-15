@@ -3,7 +3,6 @@
 namespace Yormy\ReferralSystem\Observers\Listeners;
 
 use Illuminate\Support\Facades\Auth;
-use Ramsey\Uuid\Fields\SerializableFieldsTrait;
 use Yormy\ReferralSystem\Models\ReferralAward;
 use Yormy\ReferralSystem\Observers\Events\AwardReferrerEvent;
 use Yormy\ReferralSystem\Traits\CookieTrait;
