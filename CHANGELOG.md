@@ -2,8 +2,49 @@
 
 All notable changes to `referral-system` will be documented in this file
 
-[TODO ITEMS](docs/todo.md)
+[TODO ITEMS](./docs/todo.md)
 
-## 1.0.0 - 202X-XX-XX
+## [Unreleased] 
+[branch]
+- what you are currently working on
+ 
+## [1.0.0] - 2020-11-24
+
+### Security
+
+### Fixed
+
+### Added
+
+### Changed
+
+### Removed
+
+### Depricated
+
+## 0.0.0 - 202X-XX-XX
 
 - initial release
+
+
+##################################################################
+########################## TEMPLATE ##############################
+##################################################################
+
+## [Unreleased] 
+[branch]
+- what you are currently working on
+ 
+## [1.0.0] - 2020-11-24
+
+### Security
+
+### Fixed
+
+### Added
+
+### Changed
+
+### Removed
+
+### Depricated
