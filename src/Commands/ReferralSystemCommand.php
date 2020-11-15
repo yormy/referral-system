@@ -14,6 +14,6 @@ class ReferralSystemCommand extends Command
     {
         $this->comment('All done');
 
-        $test =2;
+        $test = 2;
     }
 }
