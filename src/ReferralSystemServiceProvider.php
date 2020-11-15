@@ -32,14 +32,26 @@ class ReferralSystemServiceProvider extends ServiceProvider
 
     private function publishMigrations()
     {
-        $migrations = new FilesystemIterator(__DIR__ . "/../database/migrations");
+        $migrations = [
+            'create_referral_actions_table.php',
+            'create_referral_domains_table.php',
+            'create_referral_payments_table.php',
+            'create_referral_awards_table.php',
+        ];
 
-        foreach ($migrations as $fileInfo) {
-            $migrationFileName = $fileInfo->getFilename();
-            if (! $this->migrationFileExists($migrationFileName)) {
+        $index = 0;
+        foreach ($migrations as $migrationFileName) {
+            if (!$this->migrationFileExists($migrationFileName)) {
+
+                $sequence = date('Y_m_d_His', time());
+                $newSequence = substr($sequence, 0, strlen($sequence)-2);
+                $paddedIndex = str_pad($index, 2, '0', STR_PAD_LEFT);
+                $newSequence .= $paddedIndex;
                 $this->publishes([
-                    $fileInfo->getPath().  "/{$migrationFileName}" => database_path('migrations/' . date('Y_m_d_His', time()) . '_' . $migrationFileName),
+                    __DIR__ . "/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/' . $newSequence . '_' . $migrationFileName),
                 ], 'migrations');
+
+                $index ++;
             }
         }
     }
@@ -60,4 +72,5 @@ class ReferralSystemServiceProvider extends ServiceProvider
 
         return false;
     }
+
 }
