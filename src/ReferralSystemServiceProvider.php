@@ -2,11 +2,9 @@
 
 namespace Yormy\ReferralSystem;
 
-use Yormy\ReferralSystem\Providers\EventServiceProvider;
-use DirectoryIterator;
-use FilesystemIterator;
 use Illuminate\Support\ServiceProvider;
 use Yormy\ReferralSystem\Commands\ReferralSystemCommand;
+use Yormy\ReferralSystem\Providers\EventServiceProvider;
 
 class ReferralSystemServiceProvider extends ServiceProvider
 {
@@ -42,17 +40,16 @@ class ReferralSystemServiceProvider extends ServiceProvider
 
         $index = 0;
         foreach ($migrations as $migrationFileName) {
-            if (!$this->migrationFileExists($migrationFileName)) {
-
+            if (! $this->migrationFileExists($migrationFileName)) {
                 $sequence = date('Y_m_d_His', time());
-                $newSequence = substr($sequence, 0, strlen($sequence)-2);
+                $newSequence = substr($sequence, 0, strlen($sequence) - 2);
                 $paddedIndex = str_pad($index, 2, '0', STR_PAD_LEFT);
                 $newSequence .= $paddedIndex;
                 $this->publishes([
                     __DIR__ . "/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/' . $newSequence . '_' . $migrationFileName),
                 ], 'migrations');
 
-                $index ++;
+                $index++;
             }
         }
     }
@@ -74,5 +71,4 @@ class ReferralSystemServiceProvider extends ServiceProvider
 
         return false;
     }
-
 }

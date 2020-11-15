@@ -4,7 +4,6 @@ namespace Yormy\ReferralSystem\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
 use Yormy\ReferralSystem\Traits\CookieTrait;
 
 class ReferrerMiddleware
@@ -24,7 +23,7 @@ class ReferrerMiddleware
     {
         $referringUser = $this->getReferrerFromParameter($request);
 
-        if(!$referringUser) {
+        if (! $referringUser) {
             $referringUser = $this->getReferrerFromCookie();
         }
 
@@ -36,9 +35,7 @@ class ReferrerMiddleware
     private function getReferrerFromParameter(Request $request)
     {
         $via = $request->input($this->referrerQueryParam);
+
         return (new $this->referringUserModel)->where('id', $via)->first();
     }
-
-
-
 }

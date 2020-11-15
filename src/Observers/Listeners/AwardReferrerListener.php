@@ -17,7 +17,7 @@ class AwardReferrerListener
         if ($user) {
             $referrer = $this->getReferrerFromCookie();
 
-            if (!$referrer) {
+            if (! $referrer) {
                 $latestReward = ReferralAward::with('user')
                     ->where('user_id', $user->id)
                     ->latest('created_at')
@@ -33,8 +33,6 @@ class AwardReferrerListener
                     'action_id' => $event->actionId,
                 ]);
             }
-
         }
-
     }
 }
