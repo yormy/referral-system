@@ -1,5 +1,5 @@
 # TODO
-
+* referrer by domain
 * add api middleware? 
 
 Hoe to deal with 
