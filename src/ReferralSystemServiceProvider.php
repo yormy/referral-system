@@ -44,7 +44,7 @@ class ReferralSystemServiceProvider extends ServiceProvider
             if (! $this->migrationFileExists($migrationFileName)) {
                 $sequence = date('Y_m_d_His', time());
                 $newSequence = substr($sequence, 0, strlen($sequence) - 2);
-                $paddedIndex = str_pad($index, 2, '0', STR_PAD_LEFT);
+                $paddedIndex = str_pad(strval($index), 2, '0', STR_PAD_LEFT);
                 $newSequence .= $paddedIndex;
                 $this->publishes([
                     __DIR__ . "/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/' . $newSequence . '_' . $migrationFileName),
