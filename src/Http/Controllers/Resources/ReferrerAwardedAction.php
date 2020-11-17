@@ -4,7 +4,6 @@ namespace Yormy\ReferralSystem\Http\Controllers\Resources;
 
 use App\Libraries\DateHelper;
 use Illuminate\Http\Resources\Json\JsonResource;
-use LiranCo\NotificationSubscriptions\Models\NotificationSubscription;
 
 class ReferrerAwardedAction extends JsonResource
 {
@@ -33,5 +32,4 @@ class ReferrerAwardedAction extends JsonResource
 //            'dummy' => '@',
         ];
     }
-
 }

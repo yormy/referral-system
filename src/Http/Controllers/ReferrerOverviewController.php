@@ -54,7 +54,7 @@ class ReferrerOverviewController extends Controller
         }
 
         return view('referral-system::admin.overview', [
-            'referrers' => json_encode($referrers)
+            'referrers' => json_encode($referrers),
         ]);
     }
 }

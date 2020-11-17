@@ -2,7 +2,6 @@
 
 namespace Yormy\ReferralSystem\Http\Controllers;
 
-
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Yormy\ReferralSystem\Http\Controllers\Resources\ReferrerAwardedActionCollection;
