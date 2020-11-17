@@ -41,6 +41,10 @@ php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServic
 require("./../assets/vendor/referral-system/package")
 run npm prod
 
+require("./../../vendor/yormy/referral-system/resources/assets/package.js")
+//require("./../assets/vendor/referral-system/components/package.js")
+
+
 
 
 Register your routes

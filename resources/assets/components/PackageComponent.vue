@@ -15,13 +15,14 @@
 <script>
 export default {
   mounted() {
-    // console.log('Component mounted.');
+     console.log('Component mounted.');
   },
   methods: {
-    // eng() {
-    //   console.log('english');
-    //   this.$i18n.locale = 'en';
-    // },
+    eng() {
+      console.log('english');
+      const error =';kkk';
+      return 'ttttt';
+    },
     //
     // de() {
     //   console.log('english');

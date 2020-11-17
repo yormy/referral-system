@@ -1,3 +1,1 @@
-/* eslint-disable */
-Vue.component('package-component', require('./components/package-component').default);
-/* eslint-enable */
+Vue.component('package-component', require('./components/PackageComponent').default);
