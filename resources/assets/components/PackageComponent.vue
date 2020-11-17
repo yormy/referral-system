@@ -6,6 +6,7 @@
           <div class="card-header">Example Component</div>
 
           <div class="card-body">FROM PACKAGE in vendor </div>
+            <v-chip>dfsfsdfdsdsf</v-chip>
         </div>
       </div>
     </div>
