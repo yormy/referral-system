@@ -31,6 +31,7 @@
     [?] Only paid <br>
     [?] Only unpaid <br>
 
+    <package-component></package-component>
     <table class="table mt-5">
         <thead>
         <tr>

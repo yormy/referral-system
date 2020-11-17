@@ -22,6 +22,10 @@ class ReferralSystemServiceProvider extends ServiceProvider
                 __DIR__ . '/../resources/views' => base_path('resources/views/vendor/referral-system'),
             ], 'views');
 
+            $this->publishes([
+                __DIR__ . '/../resources/assets' => resource_path('assets/vendor/referral-system'),
+            ], 'vue');
+
             $this->publishMigrations();
 
             $this->commands([

@@ -32,6 +32,17 @@ You can publish the views file with:
 php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServiceProvider" --tag="views"
 ```
 
+
+# VUE
+php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServiceProvider" --tag="vue"
+
+//application's app.js
+
+require("./../assets/vendor/referral-system/package")
+run npm prod
+
+
+
 Register your routes
 ```
 Route::ReferralSystem('your-route-prefix');
