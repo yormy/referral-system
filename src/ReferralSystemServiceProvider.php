@@ -2,8 +2,11 @@
 
 namespace Yormy\ReferralSystem;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Yormy\ReferralSystem\Commands\ReferralSystemCommand;
+use Yormy\ReferralSystem\Http\Controllers\ReferrerDetailsController;
+use Yormy\ReferralSystem\Http\Controllers\ReferrerOverviewController;
 use Yormy\ReferralSystem\Providers\EventServiceProvider;
 
 class ReferralSystemServiceProvider extends ServiceProvider
@@ -27,6 +30,10 @@ class ReferralSystemServiceProvider extends ServiceProvider
         }
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'referral-system');
+
+        $this->registerGuestRoutes();
+        $this->registerUserRoutes();
+        $this->registerAdminRoutes();
     }
 
     private function publishMigrations()
@@ -60,6 +67,31 @@ class ReferralSystemServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/referral-system.php', 'referral-system');
         $this->app->register(EventServiceProvider::class);
     }
+
+    private function registerGuestRoutes()
+    {
+
+    }
+
+    private function registerUserRoutes()
+    {
+        Route::macro('ReferralSystemUser', function (string $prefix) {
+            Route::prefix($prefix)->name($prefix. ".")->group(function () {
+                Route::get('/details', [ReferrerDetailsController::class, 'show'])->name('yy');
+            });
+        });
+    }
+
+    private function registerAdminRoutes()
+    {
+        Route::macro('ReferralSystemAdmin', function (string $prefix) {
+            Route::prefix($prefix)->name($prefix. ".")->group(function () {
+                Route::get('/overview', [ReferrerOverviewController::class, 'index'])->name('overview');
+            });
+        });
+    }
+
+
 
     public static function migrationFileExists(string $migrationFileName): bool
     {

@@ -4,6 +4,8 @@ return [
     'cookie_lifetime_in_minutes' => 60*24*7,
     'cookie_name' => 'referral_cookie',
 
+    'datetime_format' => 'Y-m-d H:i:s',
+
     'models' => [
 
         /*

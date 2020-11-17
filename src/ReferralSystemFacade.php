@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Facade;
  */
 class ReferralSystemFacade extends Facade
 {
-    protected static function getFacadeAccessor()
-    {
-        return 'referral-system';
-    }
+//    protected static function getFacadeAccessor()
+//    {
+//        return 'referral-system';
+//    }
 }

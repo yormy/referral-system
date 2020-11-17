@@ -27,11 +27,14 @@ You can publish the config file with:
 php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServiceProvider" --tag="config"
 ```
 
-This is the contents of the published config file:
+You can publish the views file with:
+```bash
+php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServiceProvider" --tag="views"
+```
 
-```php
-return [
-];
+Register your routes
+```
+Route::ReferralSystem('your-route-prefix');
 ```
 
 ## Usage

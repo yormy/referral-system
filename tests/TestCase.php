@@ -3,6 +3,7 @@
 namespace Yormy\ReferralSystem\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Route;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Yormy\ReferralSystem\ReferralSystemServiceProvider;
 
@@ -15,6 +16,8 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Yormy\\ReferralSystem\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
+
+        Route::ReferralSystem('referralsystem');
     }
 
     protected function getPackageProviders($app)
