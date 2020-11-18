@@ -32,11 +32,14 @@ class ReferralSystemServiceProvider extends ServiceProvider
             $this->commands([
                 ReferralSystemCommand::class,
             ]);
-        }
 
-        $ui_type = 'blade';
-        if ("VUE" === config('referral-system.ui_type')) {
-            $ui_type = 'vue';
+            $ui_type = 'blade';
+
+        } else {
+            $ui_type = 'blade';
+            if ("VUE" === config('referral-system.ui_type')) {
+                $ui_type = 'vue';
+            }
         }
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views/'. $ui_type, 'referral-system');
