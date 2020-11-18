@@ -17,7 +17,7 @@ class TestCase extends Orchestra
             fn (string $modelName) => 'Yormy\\ReferralSystem\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
 
-       // Route::ReferralSystem('referralsystem');
+        // Route::ReferralSystem('referralsystem');
     }
 
     protected function getPackageProviders($app)
