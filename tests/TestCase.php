@@ -62,15 +62,15 @@ class TestCase extends Orchestra
         ]);
     }
 
-    public function dump($message)
-    {
-        if (! is_array($message) && ! is_object($message)) {
-            fwrite(STDERR, $message);
-        } else {
-            fwrite(STDERR, print_r($message));
-        }
-        fwrite(STDERR, PHP_EOL);
-    }
+//    public function dump($message)
+//    {
+//        if (! is_array($message) && ! is_object($message)) {
+//            fwrite(STDERR, $message);
+//        } else {
+//            fwrite(STDERR, print_r($message));
+//        }
+//        fwrite(STDERR, PHP_EOL);
+//    }
 
     /**
      * Set up the database.
