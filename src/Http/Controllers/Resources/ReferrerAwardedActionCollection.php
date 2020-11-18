@@ -6,7 +6,6 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class ReferrerAwardedActionCollection extends ResourceCollection
 {
-
     public $collects = ReferrerAwardedAction::class;
 
     /**

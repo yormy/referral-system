@@ -4,7 +4,6 @@ namespace Yormy\ReferralSystem\Http\Controllers\Resources;
 
 use App\Libraries\DateHelper;
 use Illuminate\Http\Resources\Json\JsonResource;
-use LiranCo\NotificationSubscriptions\Models\NotificationSubscription;
 
 class ReferrerAwardedAction extends JsonResource
 {
@@ -28,5 +27,4 @@ class ReferrerAwardedAction extends JsonResource
             'created_at' => $this->created_at->format(config('referral-system.datetime_format')),
         ];
     }
-
 }

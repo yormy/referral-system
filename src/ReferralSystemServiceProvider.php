@@ -80,7 +80,6 @@ class ReferralSystemServiceProvider extends ServiceProvider
 
     private function registerGuestRoutes()
     {
-
     }
 
     private function registerUserRoutes()
@@ -103,8 +102,6 @@ class ReferralSystemServiceProvider extends ServiceProvider
             });
         });
     }
-
-
 
     public static function migrationFileExists(string $migrationFileName): bool
     {
