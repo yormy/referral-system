@@ -10,14 +10,14 @@ class ReferrerMiddleware
 {
     use CookieTrait;
 
-    protected $referrerQueryParam;
+    protected $queryParam;
 
-    protected $referringUserModel;
+    protected $referrerClass;
 
     public function __construct()
     {
-        $this->referringUserModel = config('referral-system.models.referrer.class');
-        $this->referrerQueryParam = config('referral-system.query_parameter');
+        $this->referrerClass = config('referral-system.models.referrer.class');
+        $this->queryParam = config('referral-system.query_parameter');
     }
 
     public function handle(Request $request, Closure $next)
@@ -30,14 +30,15 @@ class ReferrerMiddleware
 
         $this->setCookie($referringUserId);
 
-        $referrerQueryParam = config('referral-system.query_parameter');
-        $request->request->add([$referrerQueryParam => $referringUserId]);
+        // add the referrer also to the current request, otherwise the info becomes only available
+        // the next time a request is made.
+        $request->request->add([$this->queryParam => $referringUserId]);
 
         return $next($request);
     }
 
     private function getReferrerFromParameter(Request $request) : ?string
     {
-        return $request->input($this->referrerQueryParam);
+        return $request->input($this->queryParam);
     }
 }

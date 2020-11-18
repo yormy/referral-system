@@ -15,14 +15,21 @@ class ReferralAward extends Model
         "action_id",
     ];
 
+    protected $referrerClass;
+
+    public function __construct()
+    {
+        $this->referrerClass = config('referral-system.models.referrer.class');
+    }
+
     public function user()
     {
-        return $this->belongsTo(config('referral-system.models.referrer.class'));
+        return $this->belongsTo($this->referrerClass);
     }
 
     public function referrer()
     {
-        return $this->belongsTo(config('referral-system.models.referrer.class'), 'referrer_id', 'id');
+        return $this->belongsTo($this->referrerClass, 'referrer_id', 'id');
     }
 
     public function action()

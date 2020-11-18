@@ -79,8 +79,8 @@ class AwardService
 
     public function getReferrer()
     {
-        $referrerQueryParam = config('referral-system.query_parameter');
-        $referrerIdFromRequest = request()->input($referrerQueryParam);
+        $queryParam = config('referral-system.query_parameter');
+        $referrerIdFromRequest = request()->input($queryParam);
 
         if ($referrerIdFromRequest) {
             return $referrerIdFromRequest;
@@ -91,13 +91,13 @@ class AwardService
 
     public function getReferringUser(string $publicReferrerId)
     {
-        $referringUserModelName = config('referral-system.models.referrer.class');
+        $referrerClass = config('referral-system.models.referrer.class');
         $modelIdColumn = config('referral-system.models.referrer.public_id');
 
         /**
         * @psalm-suppress UndefinedClass
         */
-        return (new $referringUserModelName)->where($modelIdColumn, $publicReferrerId)->first();
+        return (new $referrerClass)->where($modelIdColumn, $publicReferrerId)->first();
     }
 
     public function getReferringUserFromLatestAward(int $referrerUserId)

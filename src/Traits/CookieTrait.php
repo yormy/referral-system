@@ -6,13 +6,20 @@ use Illuminate\Support\Facades\Cookie;
 
 trait CookieTrait
 {
+    protected $cookieName;
+
+    protected $cookieLifetime;
+
+    public function __construct()
+    {
+        $this->cookieName = config('referral-system.cookie.name');
+        $this->cookieLifetime = config('referral-system.cookie.lifetime');
+    }
 
     public function getReferrerFromCookie()
     {
-        $referrerCookieName = config('referral-system.cookie.name');
-
-        if (request()->hasCookie($referrerCookieName)) {
-            $publicReferrerId = request()->cookie($referrerCookieName);
+        if (request()->hasCookie($this->cookieName)) {
+            $publicReferrerId = request()->cookie($this->cookieName);
             return $publicReferrerId;
         }
 
@@ -21,10 +28,8 @@ trait CookieTrait
 
     public function setCookie($referringUserId)
     {
-        $referrerCookieName = config('referral-system.cookie.name');
-
         if ($referringUserId) {
-            Cookie::queue($referrerCookieName, $referringUserId, config('referral-system.cookie.lifetime'));
+            Cookie::queue($this->cookieName, $referringUserId, $this->cookieLifetime);
         }
     }
 }
