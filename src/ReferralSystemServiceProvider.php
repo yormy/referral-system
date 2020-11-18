@@ -19,10 +19,11 @@ class ReferralSystemServiceProvider extends ServiceProvider
             ], 'config');
 
             $this->publishes([
-                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/referral-system'),
-            ], 'views');
+                __DIR__ . '/../resources/views/blade' => base_path('resources/views/vendor/referral-system'),
+            ], 'blade');
 
             $this->publishes([
+                __DIR__ . '/../resources/views/vue' => base_path('resources/views/vendor/referral-system'),
                 __DIR__ . '/../resources/assets' => resource_path('assets/vendor/referral-system'),
             ], 'vue');
 
@@ -33,7 +34,12 @@ class ReferralSystemServiceProvider extends ServiceProvider
             ]);
         }
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'referral-system');
+        $ui_type = 'blade';
+        if ("VUE" === config('referral-system.ui_type')) {
+            $ui_type = 'vue';
+        }
+
+        $this->loadViewsFrom(__DIR__ . '/../resources/views/'. $ui_type, 'referral-system');
 
         $this->registerGuestRoutes();
         $this->registerUserRoutes();

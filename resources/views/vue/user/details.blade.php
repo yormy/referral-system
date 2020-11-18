@@ -30,7 +30,7 @@
     Filter:<br>
     [?] Only paid <br>
     [?] Only unpaid <br>
-
+with vbue
     <package-component></package-component>
     <table class="table mt-5">
         <thead>

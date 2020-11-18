@@ -22,4 +22,17 @@ return [
         'referrable_ip' => 'id'
     ],
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Ui type : ignored when the view are published
+    |--------------------------------------------------------------------------
+    |
+    | The type of ui you want to use if you are not publishing the resources
+    | either "BLADE" only or "VUE" ui
+    |
+    */
+
+    'ui_type' => 'VUE', // BLADE | VUE
+
 ];

@@ -27,27 +27,39 @@ You can publish the config file with:
 php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServiceProvider" --tag="config"
 ```
 
-You can publish the views file with:
+## Without publishing your views and you use vue:
+In your app.js
+```
+require("./../../vendor/yormy/referral-system/resources/assets/package.js")
+```
+rerun
+```
+run npm prod
+```
+
+## Views publishing
+### Blade version
 ```bash
-php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServiceProvider" --tag="views"
+php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServiceProvider" --tag="blade"
+```
+
+### Vue version
+```bash
+php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServiceProvider" --tag="vue"
+```
+
+in your app.js
+```
+require("./../assets/vendor/referral-system/package")
+```
+
+rerun
+```
+run npm prod
 ```
 
 
-# VUE
-php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServiceProvider" --tag="vue"
-
-//application's app.js
-
-require("./../assets/vendor/referral-system/package")
-run npm prod
-
-require("./../../vendor/yormy/referral-system/resources/assets/package.js")
-//require("./../assets/vendor/referral-system/components/package.js")
-
-
-
-
-Register your routes
+## Register your routes
 ```
 Route::ReferralSystem('your-route-prefix');
 ```
