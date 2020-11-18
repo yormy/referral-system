@@ -16,6 +16,7 @@ class ReferrerAwardedAction extends JsonResource
     {
         $modelIdColumn = config('referral-system.models.referrer.public_id');
         $modelNameColumn = config('referral-system.models.referrer.name');
+
         return [
             'user_id' => $this->user->{$modelIdColumn},
             'user_name' => $this->user->{$modelNameColumn},

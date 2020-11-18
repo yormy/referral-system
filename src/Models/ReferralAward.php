@@ -22,7 +22,7 @@ class ReferralAward extends Model
 
     public function referrer()
     {
-        return $this->belongsTo(config('referral-system.models.referrer.class'),'referrer_id','id');
+        return $this->belongsTo(config('referral-system.models.referrer.class'), 'referrer_id', 'id');
     }
 
     public function action()

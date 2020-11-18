@@ -6,13 +6,13 @@ use Illuminate\Support\Facades\Cookie;
 
 trait CookieTrait
 {
-
     public function getReferrerFromCookie() : ?string
     {
         $referrerCookieName = config('referral-system.cookie.name');
 
         if (request()->hasCookie($referrerCookieName)) {
             $publicReferrerId = request()->cookie($referrerCookieName);
+
             return $publicReferrerId;
         }
 
