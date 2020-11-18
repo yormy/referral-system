@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Yormy\ReferralSystem\Http\Controllers\Resources\ReferrerAwardedActionCollection;
 use Yormy\ReferralSystem\Http\Controllers\Resources\ReferrersCollection;
 use Yormy\ReferralSystem\Models\ReferralAward;
+use Yormy\ReferralSystem\Services\AwardService;
 
 class ReferrerOverviewController extends Controller
 {
@@ -62,8 +63,21 @@ class ReferrerOverviewController extends Controller
 
             $referrers[] = (object)$referrer;
         }
+
+        $awardService = new AwardService();
+        $totalPoints = $awardService->getTotal();
+        $paidPoints = $awardService->getPaid();
+        $unpaidPoints = $awardService->getUnpaid();
+
+        $points = [
+            "total" => $totalPoints,
+            "paid" => $paidPoints,
+            "unpaid" => $unpaidPoints,
+        ];
+
         return view('referral-system::admin.overview', [
-            'referrers' => json_encode($referrers)
+            'referrers' => json_encode($referrers),
+            'points' => json_encode($points)
         ]);
     }
 }
