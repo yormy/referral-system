@@ -42,7 +42,7 @@ class ReferrerDetailsController extends Controller
             ->where('referrer_id', $referringUser->id)
             ->get();
 
-        return (new ReferrerAwardedActionCollection($awardedAction))->toArray(null);
+        return (new ReferrerAwardedActionCollection($awardedAction))->toArray(Request());
     }
 
     private function getTotalPoints($referringUser)

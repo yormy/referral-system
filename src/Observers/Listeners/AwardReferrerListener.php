@@ -27,9 +27,10 @@ class AwardReferrerListener
             $publicReferrerId = $this->awardService->getReferrer();
 
             if (! $publicReferrerId) {
-                $latestReward = $this->getReferringUserFromLatestAward($user->id);
+                $latestReward = $this->awardService->getReferringUserFromLatestAward($user->id);
                 $publicReferrerId = $latestReward->referrer_id;
             }
+
 
             if ($publicReferrerId) {
                 $referringUser = $this->awardService->getReferringUser($publicReferrerId);

@@ -17,6 +17,9 @@
 
     <issueHandlers>
         <NoInterfaceProperties errorLevel="info" />
+        <UndefinedClass errorLevel="info" />
+        <TooManyArguments errorLevel="info" />
+
     </issueHandlers>
 
     <plugins>

@@ -15,7 +15,10 @@ class ReferrerOverviewController extends Controller
     public function index()
     {
         $referringUserModelName = config('referral-system.models.referring_user_model');
+
+
         $modelNameColumn = config('referral-system.models.referring_user_name_column');
+
         $table = (new $referringUserModelName)->getTable();
 
         $modelIdColumn = config('referral-system.models.referring_user_public_column');
