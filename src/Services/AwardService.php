@@ -3,7 +3,6 @@
 namespace Yormy\ReferralSystem\Services;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Yormy\ReferralSystem\Models\ReferralAward;
 use Yormy\ReferralSystem\Traits\CookieTrait;
 
@@ -75,7 +74,7 @@ class AwardService
 
     public function getReferrer()
     {
-        $referrerQueryParam = config('referral-system.referrer_query_parameter');
+        $referrerQueryParam = config('referral-system.query_parameter');
         $referrerIdFromRequest = request()->input($referrerQueryParam);
 
         if ($referrerIdFromRequest) {
@@ -87,8 +86,8 @@ class AwardService
 
     public function getReferringUser(string $publicReferrerId)
     {
-        $referringUserModelName = config('referral-system.models.referring_user_model');
-        $modelIdColumn = config('referral-system.models.referring_user_public_column');
+        $referringUserModelName = config('referral-system.models.referrer.class');
+        $modelIdColumn = config('referral-system.models.referrer.public_id');
 
         /**
         * @psalm-suppress UndefinedClass

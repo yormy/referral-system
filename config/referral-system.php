@@ -1,42 +1,89 @@
 <?php
 
 return [
-    'cookie_lifetime_in_minutes' => 60*24*7,
-    'cookie_name' => 'referral_cookie',
+
+    /*
+    |--------------------------------------------------------------------------
+    | query_parameter
+    | The value that is visible in the url on where we can get the tracking info
+    | ie example.com?via=xxxx or example.com?friend=xxxx
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'query_parameter' => 'via',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cookie
+    | Customize the lifetime how long a cookie is kept for awarding the referrer,
+    | setting the name of the cookie as you like
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+    'cookie' => [
+        "name" => 'referral_cookie',
+        "lifetime" => 60*24*7,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | datetime_format
+    | The format do display date time fields in.
+    |--------------------------------------------------------------------------
+    |
+    */
 
     'datetime_format' => 'Y-m-d H:i:s',
 
-    'referrer_query_parameter' => 't',
-
+    /*
+    |--------------------------------------------------------------------------
+    | Models
+    | User specific models
+    |--------------------------------------------------------------------------
+    |
+    */
     'models' => [
 
         /*
-         * When using the "Referrable" trait from this package, we need to know which
-         * Eloquent model should be used to retrieve your user.
-         */
-
-        'referring_user_model' => App\User::class,
-
-        /*
         |--------------------------------------------------------------------------
-        | Referring identifier
+        | Referrer Model
+        | Only users already in the database can refer new people.
         |--------------------------------------------------------------------------
-        |
-        | The name of the column of the user model to find the referrer.
-        | This could be the database autoincrement 'id', but that would expose the internal id of the user in
-        | all the links that they communicate to refer people
-        | Better is to have a column in your user table where you store a unique(!) value (ie uuid) that the referrer
-        | can use in their communication
         |
         */
-        'referring_user_public_column' =>'xid',
-        'referring_user_name_column' =>'name',
+        "referrer" => [
+            "class" => App\User::class,  // the actual class where your users are stored, usually the User Model
 
-        /*
-         * The to reference the referrer we need a column name in the users model to reference.
-         * This is is publishable, so this should *NOT* be the primary auto increment
-         */
-        'referrable_ip' => 'id'
+            /*
+            |--------------------------------------------------------------------------
+            | Public_id
+            |--------------------------------------------------------------------------
+            |
+            | The name of the column of the user model to find the referrer.
+            | This could be the database autoincrement 'id', but that would expose the internal id of the user in
+            | all the links that they communicate to refer people
+            | Better is to have a column in your user table where you store a unique(!) value (ie uuid) that the referrer
+            | can use in their communication
+            |
+            */
+
+            "public_id" => "xid",        // the column of the users table that is used as their tracking id
+
+            /*
+            |--------------------------------------------------------------------------
+            | name
+            |--------------------------------------------------------------------------
+            |
+            | The column name that shows the friendly name for the overview of who was being referred
+            |
+            */
+
+            "name" => "name",            // the name of the user to display in the backend for your overview
+        ]
+
     ],
 
 

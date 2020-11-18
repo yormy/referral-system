@@ -4,9 +4,6 @@ namespace Yormy\ReferralSystem\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\URL;
-use Yormy\ReferralSystem\Http\Controllers\Resources\ReferrerAwardedActionCollection;
-use Yormy\ReferralSystem\Http\Controllers\Resources\ReferrersCollection;
 use Yormy\ReferralSystem\Models\ReferralAward;
 use Yormy\ReferralSystem\Services\AwardService;
 
@@ -14,14 +11,14 @@ class ReferrerOverviewController extends Controller
 {
     public function index()
     {
-        $referringUserModelName = config('referral-system.models.referring_user_model');
+        $referringUserModelName = config('referral-system.models.referrer.class');
 
 
-        $modelNameColumn = config('referral-system.models.referring_user_name_column');
+        $modelNameColumn = config('referral-system.models.referrer.name');
 
         $table = (new $referringUserModelName)->getTable();
 
-        $modelIdColumn = config('referral-system.models.referring_user_public_column');
+        $modelIdColumn = config('referral-system.models.referrer.public_id');
 
         $allReferrers = ReferralAward::select('referrer_id',$table.".". $modelIdColumn , $table. ".". $modelNameColumn)
             ->leftJoin($table, 'referrer_id', '=', $table.'.id')
@@ -53,8 +50,6 @@ class ReferrerOverviewController extends Controller
             ->whereNotNull('payment_id')
             ->get()
             ->pluck('points', 'referrer_id');
-
-
 
         $referrers = [];
         foreach ($allReferrers as $referrerModel) {

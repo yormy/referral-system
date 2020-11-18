@@ -2,7 +2,6 @@
 
 namespace Yormy\ReferralSystem\Http\Controllers\Resources;
 
-use App\Libraries\DateHelper;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ReferrerAwardedAction extends JsonResource
@@ -15,8 +14,8 @@ class ReferrerAwardedAction extends JsonResource
      */
     public function toArray($request)
     {
-        $modelIdColumn = config('referral-system.models.referring_user_public_column');
-        $modelNameColumn = config('referral-system.models.referring_user_name_column');
+        $modelIdColumn = config('referral-system.models.referrer.public_id');
+        $modelNameColumn = config('referral-system.models.referrer.name');
         return [
             'user_id' => $this->user->{$modelIdColumn},
             'user_name' => $this->user->{$modelNameColumn},
