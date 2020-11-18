@@ -19,7 +19,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn(string $modelName) => 'Yormy\\ReferralSystem\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Yormy\\ReferralSystem\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
         // Note: this also flushes the cache from within the migration
         $this->setUpDatabase($this->app);
@@ -41,6 +41,7 @@ class TestCase extends Orchestra
     public function get($uri, array $headers = [])
     {
         $uri = $this->prefix . $uri;
+
         return parent::get($uri, $headers);
     }
 
@@ -59,12 +60,11 @@ class TestCase extends Orchestra
             'database' => ':memory:',
             'prefix' => '',
         ]);
-
     }
 
     public function dump($message)
     {
-        if (!is_array($message) && !is_object($message)) {
+        if (! is_array($message) && ! is_object($message)) {
             fwrite(STDERR, $message);
         } else {
             fwrite(STDERR, print_r($message));
@@ -101,7 +101,5 @@ class TestCase extends Orchestra
         (new \SeedReferralActionsTable())->up();
 
         User::create(['email' => 'test@user.com']);
-
     }
-
 }

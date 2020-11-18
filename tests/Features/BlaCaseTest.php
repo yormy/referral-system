@@ -2,10 +2,8 @@
 
 namespace Yormy\ReferralSystem\Tests\Features;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
-use Yormy\ReferralSystem\ReferralSystemServiceProvider;
 use Yormy\ReferralSystem\Tests\TestCase;
 
 class BlaCaseTest extends TestCase
@@ -20,7 +18,6 @@ class BlaCaseTest extends TestCase
 //        //echo $response->getContent();
 //        $response->assertOk();
 //    }
-
 
     /** @test */
     public function accessdetails()
@@ -45,8 +42,7 @@ class BlaCaseTest extends TestCase
 
 //        //echo $response->getContent();
 //        dump($response->getContent());
-//dump($content);
+        //dump($content);
         $response->assertOk();
     }
-
 }

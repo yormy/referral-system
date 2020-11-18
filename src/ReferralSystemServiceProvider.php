@@ -34,7 +34,6 @@ class ReferralSystemServiceProvider extends ServiceProvider
             ]);
 
             $ui_type = 'blade';
-
         } else {
             $ui_type = 'blade';
             if ("VUE" === config('referral-system.ui_type')) {
