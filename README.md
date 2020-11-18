@@ -27,6 +27,12 @@ You can publish the config file with:
 php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServiceProvider" --tag="config"
 ```
 
+## Setting up middelware
+Add the following middleware to your routes web so that the cookies are captured
+```
+\Yormy\ReferralSystem\Http\Middleware\ReferrerMiddleware::class,
+```
+
 ## Without publishing your views and you use vue:
 In your app.js
 ```
@@ -44,6 +50,7 @@ php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServic
 ```
 
 ### Vue version
+Note , this needs vuetify v-datatable and v-chip
 ```bash
 php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServiceProvider" --tag="vue"
 ```

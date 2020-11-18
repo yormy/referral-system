@@ -6,6 +6,8 @@ return [
 
     'datetime_format' => 'Y-m-d H:i:s',
 
+    'referrer_query_parameter' => 't',
+
     'models' => [
 
         /*
@@ -14,6 +16,20 @@ return [
          */
 
         'referring_user_model' => App\User::class,
+
+        /*
+        |--------------------------------------------------------------------------
+        | Referring identifier
+        |--------------------------------------------------------------------------
+        |
+        | The name of the column of the user model to find the referrer.
+        | This could be the database autoincrement 'id', but that would expose the internal id of the user in
+        | all the links that they communicate to refer people
+        | Better is to have a column in your user table where you store a unique(!) value (ie uuid) that the referrer
+        | can use in their communication
+        |
+        */
+        'referring_user_public_column' =>'xid',
 
         /*
          * The to reference the referrer we need a column name in the users model to reference.

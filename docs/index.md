@@ -11,6 +11,9 @@ when he finally does the referrer that referred bob the most recent time will be
 
 ## Award actions of user to a referrer
 ```
+use Yormy\ReferralSystem\Observers\Events\AwardReferrerEvent;
+use Yormy\ReferralSystem\Models\ReferralAction;
+
 event(new AwardReferrerEvent(ReferralAction::UPGRADE_SILVER));
 ```
 

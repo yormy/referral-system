@@ -10,32 +10,34 @@ class ReferrerMiddleware
 {
     use CookieTrait;
 
-    protected $referrerQueryParam = "via";
+    protected $referrerQueryParam;
 
     protected $referringUserModel;
 
     public function __construct()
     {
         $this->referringUserModel = config('referral-system.models.referring_user_model');
+        $this->referrerQueryParam = config('referral-system.referrer_query_parameter');
     }
 
     public function handle(Request $request, Closure $next)
     {
-        $referringUser = $this->getReferrerFromParameter($request);
+        $referringUserId = $this->getReferrerFromParameter($request);
 
-        if (! $referringUser) {
-            $referringUser = $this->getReferrerFromCookie();
+        if (! $referringUserId) {
+            $referringUserId = $this->getReferrerFromCookie();
         }
 
-        $this->setCookie($referringUser);
+        $this->setCookie($referringUserId);
+
+        $referrerQueryParam = config('referral-system.referrer_query_parameter');
+        $request->request->add([$referrerQueryParam => $referringUserId]);
 
         return $next($request);
     }
 
-    private function getReferrerFromParameter(Request $request)
+    private function getReferrerFromParameter(Request $request) : ?string
     {
-        $via = $request->input($this->referrerQueryParam);
-
-        return (new $this->referringUserModel)->where('id', $via)->first();
+        return $request->input($this->referrerQueryParam);
     }
 }

@@ -5,34 +5,42 @@ namespace Yormy\ReferralSystem\Observers\Listeners;
 use Illuminate\Support\Facades\Auth;
 use Yormy\ReferralSystem\Models\ReferralAward;
 use Yormy\ReferralSystem\Observers\Events\AwardReferrerEvent;
+use Yormy\ReferralSystem\Services\AwardService;
 use Yormy\ReferralSystem\Traits\CookieTrait;
 
 class AwardReferrerListener
 {
     use CookieTrait;
 
+    protected AwardService $awardService;
+
+    public function __construct()
+    {
+        $this->awardService = new AwardService();
+    }
+
     public function handle(AwardReferrerEvent $event)
     {
         $user = Auth::user();
 
         if ($user) {
-            $referrer = $this->getReferrerFromCookie();
+            $publicReferrerId = $this->awardService->getReferrer();
 
-            if (! $referrer) {
-                $latestReward = ReferralAward::with('user')
-                    ->where('user_id', $user->id)
-                    ->latest('created_at')
-                    ->first();
-
-                $referrer = $latestReward->user;
+            if (! $publicReferrerId) {
+                $latestReward = $this->getReferringUserFromLatestAward($user->id);
+                $publicReferrerId = $latestReward->referrer_id;
             }
 
-            if ($referrer) {
-                ReferralAward::create([
-                    'user_id' => $user->id,
-                    'referrer_id' => $referrer->id,
-                    'action_id' => $event->actionId,
-                ]);
+            if ($publicReferrerId) {
+                $referringUser = $this->awardService->getReferringUser($publicReferrerId);
+
+                if ($referringUser) {
+                    ReferralAward::create([
+                        'user_id' => $user->id,
+                        'referrer_id' => $referringUser->id,
+                        'action_id' => $event->actionId,
+                    ]);
+                }
             }
         }
     }
