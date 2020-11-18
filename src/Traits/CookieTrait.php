@@ -11,6 +11,7 @@ trait CookieTrait
         $cookieName = config('referral-system.cookie.name');
         if (request()->hasCookie($cookieName)) {
             $publicReferrerId = request()->cookie($cookieName);
+
             return $publicReferrerId;
         }
 
@@ -19,7 +20,7 @@ trait CookieTrait
 
     public function setCookie($referringUserId)
     {
-        $cookieName= config('referral-system.cookie.name');
+        $cookieName = config('referral-system.cookie.name');
         $cookieLifetime = config('referral-system.cookie.lifetime');
 
         if ($referringUserId) {
