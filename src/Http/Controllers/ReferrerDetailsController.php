@@ -13,27 +13,49 @@ class ReferrerDetailsController extends Controller
 {
     public function show()
     {
-        $currentUser = Auth::user();
-        $awardedAction = ReferralAward::with(['action','user'])
-            ->where('referrer_id', $currentUser->id)
-            ->get();
+        $referringUser = Auth::user();
 
+        return $this->showViewFor($referringUser);
+    }
+
+    public function showForUser(string $publicReferrerId)
+    {
         $awardService = new AwardService();
-        $totalPoints = $awardService->getTotalForReferrer($currentUser->id);
-        $paidPoints = $awardService->getPaidForReferrer($currentUser->id);
-        $unpaidPoints = $awardService->getUnpaidForReferrer($currentUser->id);
+        $referringUser = $awardService->getReferringUser($publicReferrerId);
+        return $this->showViewFor($referringUser);
+    }
 
-        $points = [
-            "total" => $totalPoints,
-            "paid" => $paidPoints,
-            "unpaid" => $unpaidPoints,
-        ];
-
-        $awardedActions = (new ReferrerAwardedActionCollection($awardedAction))->toArray(null);
+    public function showViewFor($referringUser)
+    {
+        $awardedActions = $this->getAwardedActions($referringUser);
+        $points = $this->getTotalPoints($referringUser);
 
         return view('referral-system::user.details', [
             'awardedActions' => json_encode($awardedActions),
             'points' => json_encode($points),
         ]);
+    }
+
+    private function getAwardedActions($referringUser)
+    {
+        $awardedAction = ReferralAward::with(['action','user'])
+            ->where('referrer_id', $referringUser->id)
+            ->get();
+
+        return (new ReferrerAwardedActionCollection($awardedAction))->toArray(null);
+    }
+
+    private function getTotalPoints($referringUser)
+    {
+        $awardService = new AwardService();
+        $totalPoints = $awardService->getTotalForReferrer($referringUser->id);
+        $paidPoints = $awardService->getPaidForReferrer($referringUser->id);
+        $unpaidPoints = $awardService->getUnpaidForReferrer($referringUser->id);
+
+        return [
+            "total" => $totalPoints ?? 0,
+            "paid" => $paidPoints ?? 0,
+            "unpaid" => $unpaidPoints ?? 0,
+        ];
     }
 }

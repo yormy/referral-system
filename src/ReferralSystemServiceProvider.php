@@ -87,16 +87,19 @@ class ReferralSystemServiceProvider extends ServiceProvider
     {
         Route::macro('ReferralSystemUser', function (string $prefix) {
             Route::prefix($prefix)->name($prefix. ".")->group(function () {
-                Route::get('/details', [ReferrerDetailsController::class, 'show'])->name('yy');
+                Route::get('/details', [ReferrerDetailsController::class, 'show'])->name('show');
             });
         });
     }
 
     private function registerAdminRoutes()
     {
+      //  Route::get('/admin1/ref/details/{referrer}', [ReferrerDetailsController::class, 'showForUser'])->name('shownow');
+
         Route::macro('ReferralSystemAdmin', function (string $prefix) {
             Route::prefix($prefix)->name($prefix. ".")->group(function () {
-                Route::get('/overview', [ReferrerOverviewController::class, 'index'])->name('overview');
+                Route::get('/referrers', [ReferrerOverviewController::class, 'index'])->name('overview');
+                Route::get('/referrers/{referrer}', [ReferrerDetailsController::class, 'showForUser'])->name('showForUser');
             });
         });
     }

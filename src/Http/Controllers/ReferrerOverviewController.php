@@ -4,6 +4,7 @@ namespace Yormy\ReferralSystem\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 use Yormy\ReferralSystem\Http\Controllers\Resources\ReferrerAwardedActionCollection;
 use Yormy\ReferralSystem\Http\Controllers\Resources\ReferrersCollection;
 use Yormy\ReferralSystem\Models\ReferralAward;

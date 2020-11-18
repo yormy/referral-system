@@ -45,7 +45,7 @@
                 <td class="">@isset($referrer->paid){{$referrer->paid}}@endisset</td>
                 <td class="">@isset($referrer->unpaid){{$referrer->unpaid}}@endisset</td>
                 <td class="">@isset($referrer->created_at){{$referrer->created_at}}@endisset</td>
-            <td class="">[open]</td>
+                <td class=""><a href="{{url()->current(). "/". $referrer->id}}"><button class="bnt btn-link">[open]</button></a></td>
             </tr>
             @endforeach
         </tbody>

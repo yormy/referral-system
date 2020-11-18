@@ -23,13 +23,22 @@
         { text: 'paid', value: 'paid' },
         { text: 'unpaid', value: 'unpaid' },
         { text: 'last action', value: 'created_at' },
-        { text: 'action', value: '' },
+        { text: 'actions', value: 'actions' },
 
       ]"
         :items="dataTable"
         :search="search"
     >
+
+      <template v-slot:item.actions="{ item }">
+        <button type="button" class="btn btn-link" @click="open(item)">
+          open
+        </button>
+      </template>
+
     </v-data-table>
+
+
   </v-card>
 
 </template>
@@ -50,7 +59,11 @@ export default {
   },
 
   methods : {
-
+    open(item) {
+      console.log(window.location.href);
+      const current = window.location.href;
+      window.location.href = current + '/' + item.id
+    }
   }
 
 }
