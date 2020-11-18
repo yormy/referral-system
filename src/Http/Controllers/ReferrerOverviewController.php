@@ -4,9 +4,6 @@ namespace Yormy\ReferralSystem\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\URL;
-use Yormy\ReferralSystem\Http\Controllers\Resources\ReferrerAwardedActionCollection;
-use Yormy\ReferralSystem\Http\Controllers\Resources\ReferrersCollection;
 use Yormy\ReferralSystem\Models\ReferralAward;
 use Yormy\ReferralSystem\Services\AwardService;
 
@@ -23,7 +20,7 @@ class ReferrerOverviewController extends Controller
 
         $modelIdColumn = config('referral-system.models.referring_user_public_column');
 
-        $allReferrers = ReferralAward::select('referrer_id',$table.".". $modelIdColumn , $table. ".". $modelNameColumn)
+        $allReferrers = ReferralAward::select('referrer_id', $table.".". $modelIdColumn, $table. ".". $modelNameColumn)
             ->leftJoin($table, 'referrer_id', '=', $table.'.id')
             ->groupBy('referrer_id')
             ->get();
@@ -60,7 +57,7 @@ class ReferrerOverviewController extends Controller
         foreach ($allReferrers as $referrerModel) {
             $referrerId = $referrerModel->referrer_id;
 
-            $referrer = array();
+            $referrer = [];
             $referrer['id'] = $referrerModel->{$modelIdColumn};
 
             $referrer['name'] = $referrerModel->{$modelNameColumn};
@@ -86,7 +83,7 @@ class ReferrerOverviewController extends Controller
 
         return view('referral-system::admin.overview', [
             'referrers' => json_encode($referrers),
-            'points' => json_encode($points)
+            'points' => json_encode($points),
         ]);
     }
 }

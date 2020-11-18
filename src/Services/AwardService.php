@@ -3,7 +3,6 @@
 namespace Yormy\ReferralSystem\Services;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Yormy\ReferralSystem\Models\ReferralAward;
 use Yormy\ReferralSystem\Traits\CookieTrait;
 
@@ -17,6 +16,7 @@ class AwardService
             ->leftJoin('referral_actions', 'referral_actions.id', '=', 'action_id')
             ->select(DB::raw('sum(points) as points'))
             ->first();
+
         return $points->points;
     }
 
@@ -27,6 +27,7 @@ class AwardService
             ->leftJoin('referral_actions', 'referral_actions.id', '=', 'action_id')
             ->select(DB::raw('sum(points) as points'))
             ->first();
+
         return $points->points;
     }
 
@@ -37,9 +38,9 @@ class AwardService
             ->leftJoin('referral_actions', 'referral_actions.id', '=', 'action_id')
             ->select(DB::raw('sum(points) as points'))
             ->first();
+
         return $points->points;
     }
-
 
     public function getTotalForReferrer(int $referrerId)
     {
@@ -48,6 +49,7 @@ class AwardService
             ->leftJoin('referral_actions', 'referral_actions.id', '=', 'action_id')
             ->select(DB::raw('sum(points) as points'))
             ->first();
+
         return $points->points;
     }
 
@@ -59,6 +61,7 @@ class AwardService
             ->leftJoin('referral_actions', 'referral_actions.id', '=', 'action_id')
             ->select(DB::raw('sum(points) as points'))
             ->first();
+
         return $points->points;
     }
 
@@ -70,6 +73,7 @@ class AwardService
             ->leftJoin('referral_actions', 'referral_actions.id', '=', 'action_id')
             ->select(DB::raw('sum(points) as points'))
             ->first();
+
         return $points->points;
     }
 

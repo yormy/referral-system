@@ -6,8 +6,6 @@ use Illuminate\Support\Facades\Cookie;
 
 trait CookieTrait
 {
-
-
     public function getReferrerFromCookie()
     {
 //        $referringUserModel = config('referral-system.models.referring_user_model');
@@ -15,6 +13,7 @@ trait CookieTrait
 
         if (request()->hasCookie($referrerCookieName)) {
             $publicReferrerId = request()->cookie($referrerCookieName);
+
             return $publicReferrerId;
         }
     }
