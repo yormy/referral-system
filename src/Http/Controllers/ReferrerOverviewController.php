@@ -4,12 +4,16 @@ namespace Yormy\ReferralSystem\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Yormy\ReferralSystem\Http\Controllers\Resources\ReferrerAwardedActionCollection;
+use Yormy\ReferralSystem\Http\Controllers\Resources\ReferrersCollection;
 use Yormy\ReferralSystem\Models\ReferralAward;
 
 class ReferrerOverviewController extends Controller
 {
     public function index()
     {
+        $allReferrers = ReferralAward::select('referrer_id')->groupBy('referrer_id')->get();
+
         $lastAward = ReferralAward::select('referrer_id', DB::raw('max(created_at) as created_at'))
             ->groupBy('referrer_id')
             ->get()
@@ -37,22 +41,18 @@ class ReferrerOverviewController extends Controller
             ->pluck('points', 'referrer_id');
 
         $referrers = [];
-        foreach ($totalPoints as $referrer_id => $total) {
-            $referrers[$referrer_id]['total'] = $total;
-        }
+        foreach ($allReferrers as $referrer) {
+            $referrerId = $referrer->referrer_id;
+            $referrer = array();
+            $referrer['id'] = $referrerId;
 
-        foreach ($unpaidPoints as $referrer_id => $total) {
-            $referrers[$referrer_id]['unpaid'] = $total;
-        }
+            $referrer['total'] = $totalPoints->get($referrerId, 0);
+            $referrer['paid'] = $paidPoints->get($referrerId, 0);
+            $referrer['unpaid'] = $unpaidPoints->get($referrerId, 0);
+            $referrer['created_at'] = $lastAward->get($referrerId, 0)->format(config('referral-system.datetime_format'));
 
-        foreach ($paidPoints as $referrer_id => $total) {
-            $referrers[$referrer_id]['paid'] = $total;
+            $referrers[] = (object)$referrer;
         }
-
-        foreach ($lastAward as $referrer_id => $created_at) {
-            $referrers[$referrer_id]['created_at'] = $created_at->format(config('referral-system.datetime_format'));
-        }
-
         return view('referral-system::admin.overview', [
             'referrers' => json_encode($referrers)
         ]);

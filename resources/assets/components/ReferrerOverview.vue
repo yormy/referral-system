@@ -1,0 +1,57 @@
+<template>
+  <v-card>
+    <v-card-title>
+        <v-row>
+          <v-col cols="6">
+          </v-col>
+          <v-col cols="6">
+            <v-text-field
+              v-model="search"
+              append-icon="mdi-magnify"
+              label="Search"
+              single-line
+              hide-details
+            ></v-text-field>
+          </v-col>
+        </v-row>
+    </v-card-title>
+
+    <v-data-table
+        :headers="[
+        { text: 'Affiliate', value: 'id' },
+        { text: 'total points', value: 'total' },
+        { text: 'paid', value: 'paid' },
+        { text: 'unpaid', value: 'unpaid' },
+        { text: 'last action', value: 'created_at' },
+        { text: 'action', value: '' },
+
+      ]"
+        :items="dataTable"
+        :search="search"
+    >
+    </v-data-table>
+  </v-card>
+
+</template>
+
+<script>
+export default {
+
+  props: {
+    dataTable: {
+      type: Array,
+    },
+  },
+
+  data() {
+    return {
+      search: null,
+    }
+  },
+
+  methods : {
+
+  }
+
+}
+</script>

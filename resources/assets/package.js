@@ -1,3 +1,4 @@
 /*eslint-disable */
-Vue.component('package-component', require('./components/PackageComponent').default);
+Vue.component('referrer-details-overview', require('./components/DetailsOverview').default);
+Vue.component('referrer-referrer-overview', require('./components/ReferrerOverview').default);
 /*eslint-enable */

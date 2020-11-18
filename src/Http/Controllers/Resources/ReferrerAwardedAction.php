@@ -21,16 +21,8 @@ class ReferrerAwardedAction extends JsonResource
             'actionName' => $this->action->name,
             'points' => $this->action->points,
             'paid' => $this->payment_id ? true : false,
+            'paidSearchable' => $this->payment_id ? "#paid" : "#unpaid",
             'created_at' => $this->created_at->format(config('referral-system.datetime_format')),
-//            'person.email' => $this->person->email,
-//            'hash' => $this->hash,
-//            'recipient' => $this->recipient,
-//            'subject' => $this->subject,
-//            'content' => $this->content,
-//            'opens' => $this->opens,
-//            'clicks' => $this->clicks,
-//            'created_at' => DateHelper::formatDateTimeForUser($this->created_at),
-//            'dummy' => '@',
         ];
     }
 

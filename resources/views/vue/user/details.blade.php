@@ -27,32 +27,9 @@
 
     </div>
 
-    Filter:<br>
-    [?] Only paid <br>
-    [?] Only unpaid <br>
-with vbue
-    <package-component></package-component>
-    <table class="table mt-5">
-        <thead>
-        <tr>
-            <th>Refered</th>
-            <th>Date</th>
-            <th>Points</th>
-            <th>Action</th>
-            <th>Paid</th>
-        </tr>
+    <referrer-details-overview
+        :data-table="{{$awardedActions}}"
+    >
+    </referrer-details-overview>
 
-        </thead>
-        <tbody>
-        @foreach (json_decode($awardedActions) as $id => $action)
-            <tr>
-                <td class="">@isset($action->user_id){{$action->user_id}}@endisset</td>
-                <td class="">@isset($action->created_at){{$action->created_at}}@endisset</td>
-                <td class="">@isset($action->points){{$action->points}}@endisset</td>
-                <td class="">@isset($action->actionName){{$action->actionName}}@endisset</td>
-                <td class="">@isset($action->paid){{$action->paid}}@endisset</td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
 @endsection
