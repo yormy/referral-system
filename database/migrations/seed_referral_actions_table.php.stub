@@ -63,7 +63,7 @@ class SeedReferralActionsTable extends Migration
 
     private function createActions($actions)
     {
-        foreach ($actions as $rolename => $details) {
+        foreach ($actions as $details) {
             ReferralAction::create($details);
         }
     }

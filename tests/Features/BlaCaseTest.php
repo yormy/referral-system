@@ -40,7 +40,7 @@ class BlaCaseTest extends TestCase
 
 
         $response = $this->get('/details');
-        $content = json_decode($response->getContent());
+//        $content = json_decode($response->getContent());
 
 
 //        //echo $response->getContent();
