@@ -66,9 +66,9 @@ class ReferrerOverviewController extends Controller
         }
 
         $awardService = new AwardService();
-        $totalPoints = $awardService->getTotal();
-        $paidPoints = $awardService->getPaid();
-        $unpaidPoints = $awardService->getUnpaid();
+        $totalPoints = $awardService->getGlobalTotal();
+        $paidPoints = $awardService->getGlobalPaid();
+        $unpaidPoints = $awardService->getGlobalUnpaid();
 
         $points = [
             "total" => $totalPoints,

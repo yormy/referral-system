@@ -10,7 +10,7 @@ class AwardService
 {
     use CookieTrait;
 
-    public function getTotal()
+    public function getGlobalTotal()
     {
         $points = ReferralAward::select('points')
             ->leftJoin('referral_actions', 'referral_actions.id', '=', 'action_id')
@@ -20,7 +20,7 @@ class AwardService
         return $points->points;
     }
 
-    public function getPaid()
+    public function getGlobalPaid()
     {
         $points = ReferralAward::select('points')
             ->whereNotNull('payment_id')
@@ -31,7 +31,7 @@ class AwardService
         return $points->points;
     }
 
-    public function getUnpaid()
+    public function getGlobalUnpaid()
     {
         $points = ReferralAward::select('points')
             ->whereNull('payment_id')
@@ -42,7 +42,7 @@ class AwardService
         return $points->points;
     }
 
-    public function getTotalForReferrer(int $referrerId)
+    public function getReferrerTotal(int $referrerId)
     {
         $points = ReferralAward::select('points')
             ->where('referrer_id', $referrerId)
@@ -53,7 +53,7 @@ class AwardService
         return $points->points;
     }
 
-    public function getPaidForReferrer(int $referrerId)
+    public function getReferrerPaid(int $referrerId)
     {
         $points = ReferralAward::select('points')
             ->where('referrer_id', $referrerId)
@@ -65,7 +65,7 @@ class AwardService
         return $points->points;
     }
 
-    public function getUnpaidForReferrer(int $referrerId)
+    public function getReferrerUnpaid(int $referrerId)
     {
         $points = ReferralAward::select('points')
             ->where('referrer_id', $referrerId)

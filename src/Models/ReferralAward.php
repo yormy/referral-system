@@ -17,8 +17,9 @@ class ReferralAward extends Model
 
     protected $referrerClass;
 
-    public function __construct()
+    public function __construct(array $attributes = [])
     {
+        parent::__construct($attributes);
         $this->referrerClass = config('referral-system.models.referrer.class');
     }
 

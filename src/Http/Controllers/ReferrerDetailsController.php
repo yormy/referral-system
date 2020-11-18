@@ -48,9 +48,9 @@ class ReferrerDetailsController extends Controller
     private function getTotalPoints($referringUser)
     {
         $awardService = new AwardService();
-        $totalPoints = $awardService->getTotalForReferrer($referringUser->id);
-        $paidPoints = $awardService->getPaidForReferrer($referringUser->id);
-        $unpaidPoints = $awardService->getUnpaidForReferrer($referringUser->id);
+        $totalPoints = $awardService->getReferrerTotal($referringUser->id);
+        $paidPoints = $awardService->getReferrerPaid($referringUser->id);
+        $unpaidPoints = $awardService->getReferrerUnpaid($referringUser->id);
 
         return [
             "total" => $totalPoints ?? 0,
