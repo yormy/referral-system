@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cookie;
 trait CookieTrait
 {
 
-    public function getReferrerFromCookie() : ?string
+    public function getReferrerFromCookie()
     {
         $referrerCookieName = config('referral-system.cookie.name');
 
