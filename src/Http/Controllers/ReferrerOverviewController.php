@@ -20,7 +20,7 @@ class ReferrerOverviewController extends Controller
 
         $modelIdColumn = config('referral-system.models.referrer.public_id');
 
-        $allReferrers = ReferralAward::select('referrer_id',$table.".". $modelIdColumn , $table. ".". $modelNameColumn)
+        $allReferrers = ReferralAward::select('referrer_id', $table.".". $modelIdColumn, $table. ".". $modelNameColumn)
             ->leftJoin($table, 'referrer_id', '=', $table.'.id')
             ->groupBy('referrer_id')
             ->get();
@@ -55,7 +55,7 @@ class ReferrerOverviewController extends Controller
         foreach ($allReferrers as $referrerModel) {
             $referrerId = $referrerModel->referrer_id;
 
-            $referrer = array();
+            $referrer = [];
             $referrer['id'] = $referrerModel->{$modelIdColumn};
 
             $referrer['name'] = $referrerModel->{$modelNameColumn};
@@ -81,7 +81,7 @@ class ReferrerOverviewController extends Controller
 
         return view('referral-system::admin.overview', [
             'referrers' => json_encode($referrers),
-            'points' => json_encode($points)
+            'points' => json_encode($points),
         ]);
     }
 }

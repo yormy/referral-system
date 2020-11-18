@@ -93,7 +93,7 @@ class ReferralSystemServiceProvider extends ServiceProvider
 
     private function registerAdminRoutes()
     {
-      //  Route::get('/admin1/ref/details/{referrer}', [ReferrerDetailsController::class, 'showForUser'])->name('shownow');
+        //  Route::get('/admin1/ref/details/{referrer}', [ReferrerDetailsController::class, 'showForUser'])->name('shownow');
 
         Route::macro('ReferralSystemAdmin', function (string $prefix) {
             Route::prefix($prefix)->name($prefix. ".")->group(function () {

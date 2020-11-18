@@ -21,6 +21,7 @@ class ReferrerDetailsController extends Controller
     {
         $awardService = new AwardService();
         $referringUser = $awardService->getReferringUser($publicReferrerId);
+
         return $this->showViewFor($referringUser);
     }
 

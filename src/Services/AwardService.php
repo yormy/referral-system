@@ -16,6 +16,7 @@ class AwardService
             ->leftJoin('referral_actions', 'referral_actions.id', '=', 'action_id')
             ->select(DB::raw('sum(points) as points'))
             ->first();
+
         return $points->points;
     }
 
@@ -26,6 +27,7 @@ class AwardService
             ->leftJoin('referral_actions', 'referral_actions.id', '=', 'action_id')
             ->select(DB::raw('sum(points) as points'))
             ->first();
+
         return $points->points;
     }
 
@@ -36,9 +38,9 @@ class AwardService
             ->leftJoin('referral_actions', 'referral_actions.id', '=', 'action_id')
             ->select(DB::raw('sum(points) as points'))
             ->first();
+
         return $points->points;
     }
-
 
     public function getTotalForReferrer(int $referrerId)
     {
@@ -47,6 +49,7 @@ class AwardService
             ->leftJoin('referral_actions', 'referral_actions.id', '=', 'action_id')
             ->select(DB::raw('sum(points) as points'))
             ->first();
+
         return $points->points;
     }
 
@@ -58,6 +61,7 @@ class AwardService
             ->leftJoin('referral_actions', 'referral_actions.id', '=', 'action_id')
             ->select(DB::raw('sum(points) as points'))
             ->first();
+
         return $points->points;
     }
 
@@ -69,6 +73,7 @@ class AwardService
             ->leftJoin('referral_actions', 'referral_actions.id', '=', 'action_id')
             ->select(DB::raw('sum(points) as points'))
             ->first();
+
         return $points->points;
     }
 
