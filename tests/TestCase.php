@@ -18,9 +18,10 @@ class TestCase extends Orchestra
     {
         parent::setUp();
 
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Yormy\\ReferralSystem\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
-        );
+//        Factory::guessFactoryNamesUsing(
+//            fn (string $modelName) => 'Yormy\\ReferralSystem\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+//        );
+
         // Note: this also flushes the cache from within the migration
         $this->setUpDatabase($this->app);
 
