@@ -13,7 +13,7 @@ class ReferrerDetailsController extends Controller
     public function show()
     {
         $currentUser = Auth::user();
-        $awardedAction = ReferralAward::with('action')
+        $awardedAction = ReferralAward::with(['action','user'])
             ->where('referrer_id', $currentUser->id)
             ->get();
 

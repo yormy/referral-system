@@ -20,6 +20,11 @@ class ReferralAward extends Model
         return $this->belongsTo(config('referral-system.models.referring_user_model'));
     }
 
+    public function referrer()
+    {
+        return $this->belongsTo(config('referral-system.models.referring_user_model'),'referrer_id','id');
+    }
+
     public function action()
     {
         return $this->hasOne(ReferralAction::class, 'id', 'action_id');

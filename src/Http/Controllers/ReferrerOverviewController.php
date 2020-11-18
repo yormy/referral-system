@@ -12,7 +12,15 @@ class ReferrerOverviewController extends Controller
 {
     public function index()
     {
-        $allReferrers = ReferralAward::select('referrer_id')->groupBy('referrer_id')->get();
+        $referringUserModelName = config('referral-system.models.referring_user_model');
+        $table = (new $referringUserModelName)->getTable();
+
+        $modelIdColumn = config('referral-system.models.referring_user_public_column');
+
+        $allReferrers = ReferralAward::select('referrer_id',$table.".". $modelIdColumn )
+            ->leftJoin($table, 'referrer_id', '=', $table.'.id')
+            ->groupBy('referrer_id')
+            ->get();
 
         $lastAward = ReferralAward::select('referrer_id', DB::raw('max(created_at) as created_at'))
             ->groupBy('referrer_id')
@@ -41,10 +49,11 @@ class ReferrerOverviewController extends Controller
             ->pluck('points', 'referrer_id');
 
         $referrers = [];
-        foreach ($allReferrers as $referrer) {
-            $referrerId = $referrer->referrer_id;
+        foreach ($allReferrers as $referrerModel) {
+            $referrerId = $referrerModel->referrer_id;
+
             $referrer = array();
-            $referrer['id'] = $referrerId;
+            $referrer['id'] = $referrerModel->{$modelIdColumn};
 
             $referrer['total'] = $totalPoints->get($referrerId, 0);
             $referrer['paid'] = $paidPoints->get($referrerId, 0);
