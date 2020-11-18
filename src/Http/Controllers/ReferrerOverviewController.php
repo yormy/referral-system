@@ -11,14 +11,11 @@ class ReferrerOverviewController extends Controller
 {
     public function index()
     {
-        $referringUserModelName = config('referral-system.models.referrer.class');
-
-
-        $modelNameColumn = config('referral-system.models.referrer.name');
-
-        $table = (new $referringUserModelName)->getTable();
+        $referrerClass = config('referral-system.models.referrer.class');
+        $table = (new $referrerClass)->getTable();
 
         $modelIdColumn = config('referral-system.models.referrer.public_id');
+        $modelNameColumn = config('referral-system.models.referrer.name');
 
         $allReferrers = ReferralAward::select('referrer_id', $table.".". $modelIdColumn, $table. ".". $modelNameColumn)
             ->leftJoin($table, 'referrer_id', '=', $table.'.id')
