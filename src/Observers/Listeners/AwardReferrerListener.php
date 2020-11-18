@@ -35,7 +35,6 @@ class AwardReferrerListener
                 $referringUser = $this->awardService->getReferringUser($publicReferrerId);
 
                 if ($referringUser) {
-
                     ReferralAward::create([
                         'user_id' => $user->id,
                         'referrer_id' => $referringUser->id,
