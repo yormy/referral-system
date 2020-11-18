@@ -30,7 +30,7 @@ class BlaCaseTest extends TestCase
 //        resource_path('sss');
 //
 //        //config(['view.paths' => 'New Name']);
-        dump( Config::get('referral-system.ui_type'));
+        //dump( Config::get('referral-system.ui_type'));
 
 //
 //        return;
@@ -43,9 +43,9 @@ class BlaCaseTest extends TestCase
         $content = json_decode($response->getContent());
 
 
-        //echo $response->getContent();
-        dump($response->getContent());
-dump($content);
+//        //echo $response->getContent();
+//        dump($response->getContent());
+//dump($content);
         $response->assertOk();
     }
 
