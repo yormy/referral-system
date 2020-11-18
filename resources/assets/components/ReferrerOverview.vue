@@ -19,6 +19,7 @@
     <v-data-table
         :headers="[
         { text: 'Affiliate', value: 'id' },
+        { text: 'name', value: 'name' },
         { text: 'total points', value: 'total' },
         { text: 'paid', value: 'paid' },
         { text: 'unpaid', value: 'unpaid' },

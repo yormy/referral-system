@@ -30,6 +30,7 @@ return [
         |
         */
         'referring_user_public_column' =>'xid',
+        'referring_user_name_column' =>'name',
 
         /*
          * The to reference the referrer we need a column name in the users model to reference.

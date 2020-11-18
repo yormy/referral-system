@@ -28,6 +28,7 @@
         <thead>
         <tr>
             <th>Refered</th>
+            <th>Name</th>
             <th>Date</th>
             <th>Points</th>
             <th>Action</th>
@@ -39,6 +40,7 @@
         @foreach (json_decode($awardedActions) as $id => $action)
             <tr>
                 <td class="">@isset($action->user_id){{$action->user_id}}@endisset</td>
+                <td class="">@isset($referrer->user_name){{$referrer->user_name}}@endisset</td>
                 <td class="">@isset($action->created_at){{$action->created_at}}@endisset</td>
                 <td class="">@isset($action->points){{$action->points}}@endisset</td>
                 <td class="">@isset($action->actionName){{$action->actionName}}@endisset</td>

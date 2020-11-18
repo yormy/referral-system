@@ -19,6 +19,7 @@
     <v-data-table
         :headers="[
         { text: 'user', value: 'user_id' },
+        { text: 'name', value: 'user_name' },
         { text: 'date', value: 'created_at' },
         { text: 'points', value: 'points' },
         { text: 'action', value: 'actionName' },

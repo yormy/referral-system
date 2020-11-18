@@ -17,8 +17,10 @@ class ReferrerAwardedAction extends JsonResource
     public function toArray($request)
     {
         $modelIdColumn = config('referral-system.models.referring_user_public_column');
+        $modelNameColumn = config('referral-system.models.referring_user_name_column');
         return [
             'user_id' => $this->user->{$modelIdColumn},
+            'user_name' => $this->user->{$modelNameColumn},
             'actionName' => $this->action->name,
             'points' => $this->action->points,
             'paid' => $this->payment_id ? true : false,

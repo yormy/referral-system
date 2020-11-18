@@ -29,6 +29,7 @@
         <thead>
         <tr>
             <th>Affiliate</th>
+            <th>Name</th>
             <th>total points</th>
             <th>paid</th>
             <th>unpaid</th>
@@ -41,6 +42,7 @@
             @foreach (json_decode($referrers) as $id => $referrer)
             <tr>
                 <td class="">@isset($referrer->id){{$referrer->id}}@endisset</td>
+                <td class="">@isset($referrer->name){{$referrer->name}}@endisset</td>
                 <td class="">@isset($referrer->total){{$referrer->total}}@endisset</td>
                 <td class="">@isset($referrer->paid){{$referrer->paid}}@endisset</td>
                 <td class="">@isset($referrer->unpaid){{$referrer->unpaid}}@endisset</td>
