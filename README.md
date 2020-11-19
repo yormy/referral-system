@@ -3,7 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/yormy/referral-system.svg?style=flat-square)](https://packagist.org/packages/yormy/referral-system)
 [![Total Downloads](https://img.shields.io/packagist/dt/yormy/referral-system.svg?style=flat-square)](https://packagist.org/packages/yormy/referral-system)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/facade/ignition/run-php-tests?label=Tests)
-
+![Alt text](./coverage.svg)
 ## Installation
 
 
