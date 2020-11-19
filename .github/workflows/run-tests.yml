@@ -41,5 +41,5 @@ jobs:
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
-        run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml
+        run: vendor/bin/phpunit --coverage-text --coverage-clover=clover.xml
 
