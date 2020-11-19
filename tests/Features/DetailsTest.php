@@ -3,15 +3,14 @@
 namespace Yormy\ReferralSystem\Tests\Features;
 
 use Illuminate\Support\Facades\Auth;
+use Yormy\ReferralSystem\Models\ReferralAction;
 use Yormy\ReferralSystem\Models\ReferralAward;
-use Yormy\ReferralSystem\Tests\TestCase;
 
 use Yormy\ReferralSystem\Observers\Events\AwardReferrerEvent;
-use Yormy\ReferralSystem\Models\ReferralAction;
+use Yormy\ReferralSystem\Tests\TestCase;
 
 class DetailsTest extends TestCase
 {
-
     /** @test */
     public function no_referrals_yet()
     {
@@ -51,7 +50,6 @@ class DetailsTest extends TestCase
         $this->assertStringContainsString("<span id='total'>500</span>", $response->getContent());
         $this->assertStringContainsString("<span id='paid'>0</span>", $response->getContent());
         $this->assertStringContainsString("<span id='unpaid'>500</span>", $response->getContent());
-
     }
 
     /** @test */
@@ -69,5 +67,4 @@ class DetailsTest extends TestCase
 
         $this->assertEquals($referralAwardsCount, 2);
     }
-
 }
