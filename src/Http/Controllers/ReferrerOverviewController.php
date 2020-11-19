@@ -71,9 +71,9 @@ class ReferrerOverviewController extends Controller
         $unpaidPoints = $awardService->getGlobalUnpaid();
 
         $points = [
-            "total" => $totalPoints,
-            "paid" => $paidPoints,
-            "unpaid" => $unpaidPoints,
+            "total" => $totalPoints ?? 0,
+            "paid" => $paidPoints  ?? 0,
+            "unpaid" => $unpaidPoints  ?? 0,
         ];
 
         return view('referral-system::admin.overview', [

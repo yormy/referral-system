@@ -28,10 +28,10 @@ class ReferralAward extends Model
         return $this->belongsTo($this->referrerClass);
     }
 
-    public function referrer()
-    {
-        return $this->belongsTo($this->referrerClass, 'referrer_id', 'id');
-    }
+//    public function referrer()
+//    {
+//        return $this->belongsTo($this->referrerClass, 'referrer_id', 'id');
+//    }
 
     public function action()
     {

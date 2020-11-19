@@ -36,6 +36,7 @@ class TestCase extends Orchestra
         Route::middleware(ReferrerMiddleware::class)
             ->group(function () {
                 Route::ReferralSystemUser($this->prefix);
+                Route::ReferralSystemAdmin($this->prefix);
             });
 
         $this->setViewForLayout();
@@ -108,6 +109,7 @@ class TestCase extends Orchestra
         $app['db']->connection()->getSchemaBuilder()->create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email');
+            $table->string('name');
             $table->softDeletes();
         });
 
@@ -126,8 +128,8 @@ class TestCase extends Orchestra
         include_once __DIR__.'/../database/migrations/seed_referral_actions_table.php.stub';
         (new \SeedReferralActionsTable())->up();
 
-        User::create(['email' => 'bob@user.com']);
-        User::create(['email' => 'adam@user.com']);
-        User::create(['email' => 'felix@referrer.com']);
+        User::create(['email' => 'bob@user.com', 'name' =>'bobuser']);
+        User::create(['email' => 'adam@user.com', 'name' =>'adamuser']);
+        User::create(['email' => 'felix@referrer.com', 'name' =>'felixreferrer']);
     }
 }

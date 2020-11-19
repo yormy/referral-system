@@ -13,7 +13,7 @@ class User extends Model implements AuthorizableContract, AuthenticatableContrac
     use Authorizable;
     use Authenticatable;
 
-    protected $fillable = ['email'];
+    protected $fillable = ['email' ,'name'];
 
     public $timestamps = false;
 

@@ -97,6 +97,6 @@ return [
     |
     */
 
-    'ui_type' => 'VUE', // BLADE | VUE
+    'ui_type' => 'VsUE', // BLADE | VUE
 
 ];
