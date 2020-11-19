@@ -12,7 +12,7 @@ use Yormy\ReferralSystem\Tests\TestCase;
 
 class RevokingTest extends TestCase
 {
-    /** @tests */
+    /** @test */
     public function award_silver_recorded()
     {
         Auth::login($this->userBob);
