@@ -51,7 +51,7 @@ class TestCase extends Orchestra
         config(['referral-system.models.referrer.class' => User::class]);
     }
 
-    public function user(string $email) : User
+    public function user(string $email)
     {
         return User::where('email', $email)->first();
     }
@@ -89,10 +89,10 @@ class TestCase extends Orchestra
 
     public function report($message)
     {
-        if (! is_array($message) && ! is_object($message)) {
-            fwrite(STDERR, $message);
-        } else {
+        if (is_array($message) || is_object($message)) {
             fwrite(STDERR, print_r($message));
+        } else {
+            fwrite(STDERR, (string)$message);
         }
         fwrite(STDERR, PHP_EOL);
     }

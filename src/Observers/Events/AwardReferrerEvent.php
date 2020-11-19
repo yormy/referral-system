@@ -10,9 +10,9 @@ class AwardReferrerEvent
     use Dispatchable;
     use SerializesModels;
 
-    public string $actionId;
+    public int $actionId;
 
-    public function __construct(string $actionId)
+    public function __construct(int $actionId)
     {
         $this->actionId = $actionId;
     }

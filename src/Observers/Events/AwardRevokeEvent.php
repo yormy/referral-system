@@ -10,11 +10,11 @@ class AwardRevokeEvent
     use Dispatchable;
     use SerializesModels;
 
-    public string $actionId;
+    public int $actionId;
 
     public string $deleteReason;
 
-    public function __construct(string $actionId, string $deleteReason = "")
+    public function __construct(int $actionId, string $deleteReason = "")
     {
         $this->actionId = $actionId;
         $this->deleteReason = $deleteReason;
