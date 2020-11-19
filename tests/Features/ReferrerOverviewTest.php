@@ -40,7 +40,7 @@ class ReferrerOverviewTest extends TestCase
         $this->assertStringContainsString("felixreferrer", $response->getContent());
     }
 
-    /** @test */
+    /** @tests */
     public function referrers_details()
     {
         Auth::login($this->userBob);
