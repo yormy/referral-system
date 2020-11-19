@@ -41,13 +41,13 @@ jobs:
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
-        run: vendor/bin/phpunit --coverage-text --coverage-clover=logs/clover.xml
+        run: vendor/bin/phpunit --coverage-text --coverage-clover=clover2.xml
 
       - name: Monitor coverage
         uses: slavcodev/coverage-monitor-action@1.2.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          clover_file: "logs/clover.xml"
+          clover_file: "clover2.xml"
           threshold_alert: 10
           threshold_warning: 50
 
