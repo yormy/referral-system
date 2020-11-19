@@ -21,8 +21,8 @@ class ReferralAction extends Model
         "points",
     ];
 
-//    public function awards()
-//    {
-//        return $this->hasMany(ReferralAward::class, 'action_id', 'id');
-//    }
+    public function awards()
+    {
+        return $this->hasMany(ReferralAward::class, 'action_id', 'id');
+    }
 }
