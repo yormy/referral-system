@@ -27,6 +27,8 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, php_fileinfo
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
       - name: Setup problem matchers
         run: |
@@ -43,6 +45,11 @@ jobs:
 
       - name: Create coverage badge
         run: vendor/bin/php-coverage-badger clover-push.xml coverage.svg
+
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Archive clover
         uses: actions/upload-artifact@v2
