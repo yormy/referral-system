@@ -41,7 +41,7 @@ jobs:
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
-        run: vendor/bin/phpunit --coverage-text --coverage-clover=clover2.xml
+        run: vendor/bin/phpunit --coverage-text --coverage-clover=clover.xml
 
       - name: Monitor coverage
         uses: slavcodev/coverage-monitor-action@1.2.0
