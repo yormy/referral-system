@@ -72,8 +72,8 @@ class ReferrerOverviewController extends Controller
 
         $points = [
             "total" => $totalPoints ?? 0,
-            "paid" => $paidPoints  ?? 0,
-            "unpaid" => $unpaidPoints  ?? 0,
+            "paid" => $paidPoints ?? 0,
+            "unpaid" => $unpaidPoints ?? 0,
         ];
 
         return view('referral-system::admin.overview', [

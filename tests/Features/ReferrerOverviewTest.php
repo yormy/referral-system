@@ -3,14 +3,13 @@
 namespace Yormy\ReferralSystem\Tests\Features;
 
 use Illuminate\Support\Facades\Auth;
-use Yormy\ReferralSystem\Tests\TestCase;
+use Yormy\ReferralSystem\Models\ReferralAction;
 
 use Yormy\ReferralSystem\Observers\Events\AwardReferrerEvent;
-use Yormy\ReferralSystem\Models\ReferralAction;
+use Yormy\ReferralSystem\Tests\TestCase;
 
 class ReferrerOverviewTest extends TestCase
 {
-
     /** @test */
     public function no_referrers_yet()
     {
@@ -51,5 +50,4 @@ class ReferrerOverviewTest extends TestCase
         $response = $this->get('/referrers/' . $this->referrerFelix->id);
         $response->assertOk();
     }
-
 }

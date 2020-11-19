@@ -126,8 +126,8 @@ class TestCase extends Orchestra
         include_once __DIR__.'/../database/migrations/seed_referral_actions_table.php.stub';
         (new \SeedReferralActionsTable())->up();
 
-        User::create(['email' => 'bob@user.com', 'name' =>'bobuser']);
-        User::create(['email' => 'adam@user.com', 'name' =>'adamuser']);
-        User::create(['email' => 'felix@referrer.com', 'name' =>'felixreferrer']);
+        User::create(['email' => 'bob@user.com', 'name' => 'bobuser']);
+        User::create(['email' => 'adam@user.com', 'name' => 'adamuser']);
+        User::create(['email' => 'felix@referrer.com', 'name' => 'felixreferrer']);
     }
 }
