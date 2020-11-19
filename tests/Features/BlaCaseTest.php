@@ -3,46 +3,38 @@
 namespace Yormy\ReferralSystem\Tests\Features;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
 use Yormy\ReferralSystem\Tests\TestCase;
+
+use Yormy\ReferralSystem\Observers\Events\AwardReferrerEvent;
+use Yormy\ReferralSystem\Models\ReferralAction;
 
 class BlaCaseTest extends TestCase
 {
-//    /** @test */
-//    public function access()
-//    {
-//        //$response = $this->get('ref/details');
-//        $response = $this->get('/');
-//        $content = json_decode($response->getContent());
-//
-//        //echo $response->getContent();
-//        $response->assertOk();
-//    }
 
     /** @test */
+    public function set_cookie_middleware()
+    {
+        Auth::login($this->userBob);
+        $this->get('details?via='. $this->referrerFelix->id);
+        event(new AwardReferrerEvent(ReferralAction::UPGRADE_SILVER));
+
+        Auth::login($this->userAdam);
+        $this->get('details?via='. $this->referrerFelix->id);
+        event(new AwardReferrerEvent(ReferralAction::UPGRADE_GOLD));
+
+        Auth::login($this->referrerFelix);
+        $response = $this->get('/details');
+        echo $response->getContent();
+
+    }
+
+    /** @test4 */
     public function accessdetails()
     {
-        //$response = $this->get('ref/details');
-//
-//        resource_path('sss');
-//
-//        //config(['view.paths' => 'New Name']);
-        //dump( Config::get('referral-system.ui_type'));
-
-//
-//        return;
-        // force config to blade
-        // allow layouts.app
-        Auth::login($this->testUser);
-
+        Auth::login($this->referrerFelix);
 
         $response = $this->get('/details');
-//        $content = json_decode($response->getContent());
-
-
-//        //echo $response->getContent();
-//        dump($response->getContent());
-        //dump($content);
+        echo $response->getContent();
         $response->assertOk();
     }
 }

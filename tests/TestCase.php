@@ -6,13 +6,16 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Route;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Yormy\ReferralSystem\Http\Middleware\ReferrerMiddleware;
 use Yormy\ReferralSystem\ReferralSystemServiceProvider;
 
 class TestCase extends Orchestra
 {
     protected $prefix = 'ref';
 
-    protected $testUser;
+    protected $userBob;
+    protected $userAdam;
+    protected $referrerFelix;
 
     public function setUp(): void
     {
@@ -25,11 +28,33 @@ class TestCase extends Orchestra
         // Note: this also flushes the cache from within the migration
         $this->setUpDatabase($this->app);
 
-        $this->testUser = User::first();
+        $this->userBob = $this->user('bob@user.com');
+        $this->userAdam = $this->user('adam@user.com');
+        $this->referrerFelix = $this->user('felix@referrer.com');
 
-        Route::ReferralSystemUser($this->prefix);
+
+        Route::middleware(ReferrerMiddleware::class)
+            ->group(function () {
+                Route::ReferralSystemUser($this->prefix);
+            });
 
         $this->setViewForLayout();
+
+        $this->overwriteConfigForTesting();
+
+    }
+
+    public function overwriteConfigForTesting()
+    {
+        config(['referral-system.models.referrer.public_id' => 'id']);
+
+        config(['referral-system.models.referrer.class' => User::class]);
+    }
+
+
+    public function user(string $email) : User
+    {
+        return User::where('email', $email)->first();
     }
 
     private function setViewForLayout()
@@ -63,15 +88,15 @@ class TestCase extends Orchestra
         ]);
     }
 
-//    public function dump($message)
-//    {
-//        if (! is_array($message) && ! is_object($message)) {
-//            fwrite(STDERR, $message);
-//        } else {
-//            fwrite(STDERR, print_r($message));
-//        }
-//        fwrite(STDERR, PHP_EOL);
-//    }
+    public function report($message)
+    {
+        if (! is_array($message) && ! is_object($message)) {
+            fwrite(STDERR, $message);
+        } else {
+            fwrite(STDERR, print_r($message));
+        }
+        fwrite(STDERR, PHP_EOL);
+    }
 
     /**
      * Set up the database.
@@ -101,6 +126,8 @@ class TestCase extends Orchestra
         include_once __DIR__.'/../database/migrations/seed_referral_actions_table.php.stub';
         (new \SeedReferralActionsTable())->up();
 
-        User::create(['email' => 'test@user.com']);
+        User::create(['email' => 'bob@user.com']);
+        User::create(['email' => 'adam@user.com']);
+        User::create(['email' => 'felix@referrer.com']);
     }
 }
