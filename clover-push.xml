@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1605802516">
-  <project timestamp="1605802516">
+<coverage generated="1605802785">
+  <project timestamp="1605802785">
     <file name="/home/runner/work/referral-system/referral-system/src/Commands/ReferralSystemCommand.php">
       <class name="Yormy\ReferralSystem\Commands\ReferralSystemCommand" namespace="global">
         <metrics complexity="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
@@ -138,11 +138,9 @@
     </file>
     <file name="/home/runner/work/referral-system/referral-system/src/Models/ReferralAction.php">
       <class name="Yormy\ReferralSystem\Models\ReferralAction" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </class>
-      <line num="24" type="method" name="awards" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <metrics loc="28" ncloc="28" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      <metrics loc="28" ncloc="24" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <file name="/home/runner/work/referral-system/referral-system/src/Models/ReferralAward.php">
       <class name="Yormy\ReferralSystem\Models\ReferralAward" namespace="global">
@@ -414,6 +412,6 @@
       <line num="29" type="stmt" count="6"/>
       <metrics loc="30" ncloc="30" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="7" elements="12" coveredelements="7"/>
     </file>
-    <metrics files="20" loc="794" ncloc="751" classes="16" methods="40" coveredmethods="35" conditionals="0" coveredconditionals="0" statements="253" coveredstatements="244" elements="293" coveredelements="279"/>
+    <metrics files="20" loc="794" ncloc="747" classes="15" methods="39" coveredmethods="35" conditionals="0" coveredconditionals="0" statements="252" coveredstatements="244" elements="291" coveredelements="279"/>
   </project>
 </coverage>
