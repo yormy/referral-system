@@ -1,8 +1,4 @@
 # TODO
-* create a code coverage badge without having to signup to other services
--- can be done by running : vendor/bin/php-coverage-badger clover-push.xml coverage.svg
--- and including that in the readme. But how to run on github and remain the new image
--- ?? https://github.com/marketplace/actions/github-push
 * referrer by domain
 * add api middleware? 
 

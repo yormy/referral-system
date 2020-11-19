@@ -86,16 +86,16 @@ class TestCase extends Orchestra
             'prefix' => '',
         ]);
     }
-//
-//    public function report($message)
-//    {
-//        if (is_array($message) || is_object($message)) {
-//            fwrite(STDERR, print_r($message)); // bool passed in.. how?
-//        } else {
-//            fwrite(STDERR, (string)$message);
-//        }
-//        fwrite(STDERR, PHP_EOL);
-//    }
+
+    public function report($message)
+    {
+        if (is_array($message) || is_object($message)) {
+            fwrite(STDERR, (string)print_r($message)); // bool passed in.. how?
+        } else {
+            fwrite(STDERR, (string)$message);
+        }
+        fwrite(STDERR, PHP_EOL);
+    }
 
     /**
      * Set up the database.
