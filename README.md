@@ -1,11 +1,8 @@
 # Tracking of referrals in laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/yormy/referral-system.svg?style=flat-square)](https://packagist.org/packages/yormy/referral-system)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/yormy/referral-system/run-tests?label=tests)](https://github.com/yormy/referral-system/actions?query=workflow%3Arun-tests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/yormy/referral-system.svg?style=flat-square)](https://packagist.org/packages/yormy/referral-system)
-
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/facade/ignition/run-php-tests?label=Tests)
 
 ## Installation
 

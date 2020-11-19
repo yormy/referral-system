@@ -20,7 +20,8 @@
         "illuminate/auth": "^6.0|^7.0|^8.0",
         "illuminate/container": "^6.0|^7.0|^8.0",
         "illuminate/contracts": "^6.0|^7.0|^8.0",
-        "illuminate/database": "^6.0|^7.0|^8.0"
+        "illuminate/database": "^6.0|^7.0|^8.0",
+        "laravel/legacy-factories": "^1.0"
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",
