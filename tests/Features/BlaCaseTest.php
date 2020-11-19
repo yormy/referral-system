@@ -3,14 +3,13 @@
 namespace Yormy\ReferralSystem\Tests\Features;
 
 use Illuminate\Support\Facades\Auth;
-use Yormy\ReferralSystem\Tests\TestCase;
+use Yormy\ReferralSystem\Models\ReferralAction;
 
 use Yormy\ReferralSystem\Observers\Events\AwardReferrerEvent;
-use Yormy\ReferralSystem\Models\ReferralAction;
+use Yormy\ReferralSystem\Tests\TestCase;
 
 class BlaCaseTest extends TestCase
 {
-
     /** @test */
     public function set_cookie_middleware()
     {
@@ -25,7 +24,6 @@ class BlaCaseTest extends TestCase
         Auth::login($this->referrerFelix);
         $response = $this->get('/details');
         echo $response->getContent();
-
     }
 
     /** @test4 */

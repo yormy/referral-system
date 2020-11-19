@@ -41,7 +41,6 @@ class TestCase extends Orchestra
         $this->setViewForLayout();
 
         $this->overwriteConfigForTesting();
-
     }
 
     public function overwriteConfigForTesting()
@@ -50,7 +49,6 @@ class TestCase extends Orchestra
 
         config(['referral-system.models.referrer.class' => User::class]);
     }
-
 
     public function user(string $email) : User
     {
