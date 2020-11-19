@@ -43,9 +43,3 @@ jobs:
       - name: Execute tests
         run: vendor/bin/phpunit --coverage-text --coverage-clover=logs/clover.xml
 
-      - name: Archive clover
-        uses: actions/upload-artifact@v2
-        with:
-          name: code-coverage-report
-          path: logs/clover.xml
-
