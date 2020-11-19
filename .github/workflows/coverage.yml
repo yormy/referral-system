@@ -39,13 +39,13 @@ jobs:
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
-        run: vendor/bin/phpunit --coverage-text --coverage-clover=clover2.xml
+        run: vendor/bin/phpunit --coverage-text --coverage-clover=clover-pull.xml
 
       - name: Monitor coverage
         uses: slavcodev/coverage-monitor-action@1.2.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          clover_file: "clover2.xml"
+          clover_file: "clover-pull.xml"
           threshold_alert: 10
           threshold_warning: 50
 
@@ -53,6 +53,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: code-coverage-report
-          path: clover2.xml
+          path: clover-pull.xml
 
 
