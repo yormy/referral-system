@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1605802785">
-  <project timestamp="1605802785">
+<coverage generated="1605803561">
+  <project timestamp="1605803561">
     <file name="/home/runner/work/referral-system/referral-system/src/Commands/ReferralSystemCommand.php">
       <class name="Yormy\ReferralSystem\Commands\ReferralSystemCommand" namespace="global">
         <metrics complexity="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
