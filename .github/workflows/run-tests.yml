@@ -42,7 +42,4 @@ jobs:
 
       - name: Execute tests
         run: vendor/bin/phpunit --coverage-text --coverage-clover=logs/clover.xml
-        with:
-          name: clover
-          path: logs/clover.xml
 
