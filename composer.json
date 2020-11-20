@@ -21,9 +21,9 @@
         "illuminate/container": "^6.0|^7.0|^8.0",
         "illuminate/contracts": "^6.0|^7.0|^8.0",
         "illuminate/database": "^6.0|^7.0|^8.0",
-        "laravel/framework": "7.*",
+        "laravel/framework": "^8.0",
         "laravel/legacy-factories": "^1.0",
-        "orchestra/testbench": "5.*"
+        "orchestra/testbench": "6.*"
     },
     "require-dev": {
         "jaschilz/php-coverage-badger": "^2.0",
@@ -47,9 +47,6 @@
         "test": "vendor/bin/phpunit --colors=always --testdox",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
-    "config": {
-        "sort-packages": true
-    },
     "extra": {
         "laravel": {
             "providers": [
@@ -59,6 +56,9 @@
                 "ReferralSystem": "Yormy\\ReferralSystem\\ReferralSystemFacade"
             }
         }
+    },
+    "config": {
+        "sort-packages": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true

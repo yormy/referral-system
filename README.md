@@ -28,10 +28,12 @@ php artisan vendor:publish --provider="Yormy\ReferralSystem\ReferralSystemServic
 ## Setting up middelware
 Add the following middleware to your routes web so that the cookies are captured
 ```
-\Yormy\ReferralSystem\Http\Middleware\ReferrerMiddleware::class,
+'web' => [
+    ...
+    \Yormy\ReferralSystem\Http\Middleware\ReferrerMiddleware::class,
 ```
 
-## Without publishing your views and you use vue:
+## Without publishing your views and you use of VUE:
 In your app.js
 ```
 require("./../../vendor/yormy/referral-system/resources/assets/package.js")
@@ -64,10 +66,26 @@ run npm prod
 ```
 
 
-## Register your routes
+# Register your routes
+### User routes
+For referrers to see their own statistics
+Make sure you publish these routes within your authentication middleware
 ```
-Route::ReferralSystem('your-route-prefix');
+Route::ReferralSystemUser('referral-system');
 ```
+
+This makes the routes available as
+/referral-system/details
+
+### Admin routes
+Your admin routes to see the referrers overview
+Make sure you publish these routes within your authentication middleware
+```
+Route::ReferralSystemAdmin('referral-system');
+```
+
+This makes the routes available as
+/referral-system/referrers
 
 ## Usage
 

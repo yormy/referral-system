@@ -1,5 +1,9 @@
 # TODO
 * referrer by domain
+
+# Deal with API calls
+
+# Deal with SPA setup
 * add api middleware? 
 
 # VIEW Referrers
