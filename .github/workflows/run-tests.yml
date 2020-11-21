@@ -43,8 +43,5 @@ jobs:
       - name: Execute tests
         run: vendor/bin/phpunit --coverage-text --coverage-clover=clover-push.xml
 
-      - name: Create coverage badge
-        run: vendor/bin/php-coverage-badger clover-push.xml coverage.svg
-
 
 
