@@ -49,4 +49,15 @@ jobs:
           threshold_alert: 10
           threshold_warning: 50
 
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: coverage badge
+
+      - name: Archive clover
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage-report-push
+          path: clover-push.xml
+
 
